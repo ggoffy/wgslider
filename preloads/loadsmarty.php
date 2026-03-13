@@ -43,7 +43,7 @@ function loadSlideshows (): bool
         $category_arr = $categoryHandler->getAll($crCategory);
         foreach (\array_keys($category_arr) as $i) {
             $catKey = $category_arr[$i]->getVar('key');
-            $slsElements = $slideshowHandler->getSlideshowElements($i, Constants::DISPLAY_KEY);
+            $slsElements = $slideshowHandler->getSlideshowElements((int)$i, Constants::DISPLAY_KEY);
             $slsIdentifier = \md5((string)\mt_rand());
             $xoopsTpl->assign('block', $slsElements['block']);
             $xoopsTpl->assign('wgslider_upload_image_url', $wgsliderUploadImageUrl);

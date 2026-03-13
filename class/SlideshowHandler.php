@@ -235,7 +235,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             'tpl'    => 'wgslider_slideshow_bt3.tpl',
             'params' => json_encode([
                 'bt3_data_interval'   => 4000,
-                'bt3_data_pause'      => '"hover"',
+                'bt3_data_pause'      => 'hover',
                 'bt3_data_wrap'       => 'true',
                 'bt3_data_keyboard'   => 'true',
                 'bt3_show_indicators' => 'true',
@@ -259,7 +259,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             'tpl'    => 'wgslider_slideshow_bt5.tpl',
             'params' => json_encode([
                 'bt5_data_interval'   => 4000,
-                'bt5_data_pause'      => '"hover"',
+                'bt5_data_pause'      => 'hover',
                 'bt5_data_wrap'       => 'true',
                 'bt5_data_keyboard'   => 'true',
                 'bt5_data_touch'      => 'true',

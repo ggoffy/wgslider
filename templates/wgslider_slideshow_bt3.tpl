@@ -34,7 +34,7 @@
 <script>
     $('#myCarousel<{$wgslider_identifier}>').carousel({
         interval: <{$wgslider_param_bt3_data_interval|default:5000}>,
-        pause: <{$wgslider_param_bt3_data_pause|default:'hover'}>,
+        pause: "<{$wgslider_param_bt3_data_pause|default:'hover'}>",
         wrap: <{$wgslider_param_bt3_data_wrap|default:true}>,
         keyboard: <{$wgslider_param_bt3_data_keyboard|default:true}>
     });

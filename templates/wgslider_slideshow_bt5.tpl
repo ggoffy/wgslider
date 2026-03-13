@@ -36,14 +36,16 @@
 </div>
 
 <script>
-    const myCarouselElement = document.querySelector('#carousel<{$wgslider_identifier}>')
-
-    const carousel = new bootstrap.Carousel(myCarouselElement, {
-        interval: <{$wgslider_param_bt5_data_interval|default:5000}>,
-        pause: <{$wgslider_param_bt5_data_pause|default:'hover'}>,
-        wrap: <{$wgslider_param_bt5_data_wrap|default:true}>,
-        keyboard: <{$wgslider_param_bt5_data_keyboard|default:true}>
-    })
+    (() => {
+        const el = document.querySelector('#carousel<{$wgslider_identifier}>');
+        if (!el) return;
+        new bootstrap.Carousel(el, {
+            interval: <{$wgslider_param_bt5_data_interval|default:5000}>,
+            pause: "<{$wgslider_param_bt5_data_pause|default:'hover'|@json_encode}>",
+            wrap: <{$wgslider_param_bt5_data_wrap|default:true|@json_encode}>,
+            keyboard: <{$wgslider_param_bt5_data_keyboard|default:true|@json_encode}>
+        });
+    })();
 </script>
 
 
