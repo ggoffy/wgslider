@@ -66,6 +66,7 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($imageCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav());
             }
+            $GLOBALS['xoopsTpl']->assign('token', $GLOBALS['xoopsSecurity']->getTokenHTML());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSLIDER_THEREARENT_IMAGES);
         }
@@ -80,6 +81,9 @@ switch ($op) {
         }
         break;
     case 'change_status':
+        if (!$GLOBALS['xoopsSecurity']->check()) {
+            redirect_header('image.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
+        }
         if ($imgId > 0) {
             $imageObj = $imageHandler->get($imgId);
         } else {

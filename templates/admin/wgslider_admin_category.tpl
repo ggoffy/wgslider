@@ -28,9 +28,14 @@
                 <td class=''><{$category.datecreated_text|default:false}></td>
                 <td class=''><{$category.submitter_text|default:false}></td>
                 <td class='center'>
-                    <a href="category.php?op=change_status&amp;id=<{$category.id|default:false}>&amp;start=<{$start|default:0}>&amp;limit=<{$limit|default:0}>" title="<{$smarty.const._AM_WGSLIDER_STATUS_CHANGE}>">
-                        <img style="height:16px" src="<{$modPathIcon32}>status<{$category.status|default:false}>.png" alt="<{$category.status_text|default:false}>" title="<{$category.status_text|default:false}>" >
-                    </a>
+                    <form action="category.php" method="post" style="display:inline;">
+                        <{$token}>
+                        <input type="hidden" name="op" value="change_status">
+                        <input type="hidden" name="id" value="<{$category.id}>">
+                        <input type="hidden" name="start" value="<{$start}>">
+                        <input type="hidden" name="limit" value="<{$limit}>">
+                        <input type="image"  src="<{$modPathIcon32}>status<{$category.status}>.png" style="height:16px;border:0;">
+                    </form>
                 </td>
                 <td class="center width5">
                     <a href="category.php?op=edit&amp;id=<{$category.id|default:false}>&amp;start=<{$start|default:0}>&amp;limit=<{$limit|default:0}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> category" ></a>

@@ -34,9 +34,14 @@
                 <td class=''><{$image.datecreated_text|default:''}></td>
                 <td class=''><{$image.submitter_text|default:''}></td>
                 <td class='center'>
-                    <a href="image.php?op=change_status&amp;id=<{$image.id|default:false}>&amp;start=<{$start|default:0}>&amp;limit=<{$limit|default:0}>" title="<{$smarty.const._AM_WGSLIDER_STATUS_CHANGE}>">
-                        <img style="height:16px" src="<{$modPathIcon32}>status<{$image.status|default:false}>.png" alt="<{$image.status_text|default:false}>" title="<{$image.status_text|default:false}>" >
-                    </a>
+                    <form action="image.php" method="post" style="display:inline;">
+                        <{$token}>
+                        <input type="hidden" name="op" value="change_status">
+                        <input type="hidden" name="id" value="<{$image.id}>">
+                        <input type="hidden" name="start" value="<{$start}>">
+                        <input type="hidden" name="limit" value="<{$limit}>">
+                        <input type="image"  src="<{$modPathIcon32}>status<{$image.status}>.png" style="height:16px;border:0;">
+                    </form>
                 </td>
                 <td class="center  width5">
                     <a href="image.php?op=edit&amp;id=<{$image.id|default:false}>&amp;start=<{$start|default:0}>&amp;limit=<{$limit|default:0}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> image" ></a>

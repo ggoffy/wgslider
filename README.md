@@ -6,7 +6,7 @@
 
 ![module image](./assets/images/wgSlider.jpg)
 
-**wgSlider** module for [XOOPS CMS](https://xoops.org) enables you to create a simple slider for e.g. as theme header slideshow or as a block. You can select between different templates (gallery types, album types), which have also various settings.
+**wgSlider** module for [XOOPS CMS](https://xoops.org) is a complete image slideshow system with category and image management, multiple slideshow templates (Default, Bootstrap 3, Bootstrap 5), built-in image editor with cropping tools, block support and implementation with smarty variables, and module cloning functionality.
 
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](LICENSE)
 [![Latest Pre-Release](https://img.shields.io/github/tag/ggoffy/wggallery.svg?style=flat)](https://github.com/ggoffy/wggallery/tags/)

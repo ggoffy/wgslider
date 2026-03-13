@@ -62,11 +62,15 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($categoryCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav());
             }
+            $GLOBALS['xoopsTpl']->assign('token', $GLOBALS['xoopsSecurity']->getTokenHTML());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSLIDER_THEREARENT_CATEGORIES);
         }
         break;
     case 'change_status':
+        if (!$GLOBALS['xoopsSecurity']->check()) {
+            redirect_header('category.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
+        }
         if ($catId > 0) {
             $categoryObj = $categoryHandler->get($catId);
         } else {
