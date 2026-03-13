@@ -1,0 +1,49 @@
+
+
+<div id="carousel<{$wgslider_identifier}>" class="carousel slide" data-bs-ride="carousel">
+    <{if $wgslider_param_bt5_show_indicators == 'true'}>
+    <div class="carousel-indicators">
+        <{foreach $block as $slider_images name=loop}>
+        <button type="button" data-bs-target="#carousel<{$wgslider_identifier}>" data-bs-slide-to="<{$smarty.foreach.loop.index}>" class="<{if $smarty.foreach.loop.index == 0}>active<{/if}>" aria-current="true" aria-label="Slide 1"></button>
+        <{/foreach}>
+    </div>
+    <{/if}>
+
+    <div class="carousel-inner">
+        <{foreach $block as $slider_images name=loop}>
+        <div class="carousel-item <{if $smarty.foreach.loop.index == 0}>active<{/if}>">
+            <img src="<{$wgslider_upload_image_url|default:''}>/<{$slider_images.realname}>"
+                 class="d-block <{if $wgslider_param_bt5_fullsize == 'true'}>w-100<{else}>center<{/if}>" alt="<{$slider_images.tooltip}>">
+            <{if $wgslider_param_bt5_show_captions == 'true'}>
+            <div class="carousel-caption d-none d-md-block">
+                <p><{$slider_images.tooltip}></p>
+            </div>
+            <{/if}>
+        </div>
+        <{/foreach}>
+    </div>
+
+    <{if $wgslider_param_bt5_show_prev_next == 'true'}>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel<{$wgslider_identifier}>" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel<{$wgslider_identifier}>" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    <{/if}>
+</div>
+
+<script>
+    const myCarouselElement = document.querySelector('#carousel<{$wgslider_identifier}>')
+
+    const carousel = new bootstrap.Carousel(myCarouselElement, {
+        interval: <{$wgslider_param_bt5_data_interval|default:5000}>,
+        pause: <{$wgslider_param_bt5_data_pause|default:'hover'}>,
+        wrap: <{$wgslider_param_bt5_data_wrap|default:true}>,
+        keyboard: <{$wgslider_param_bt5_data_keyboard|default:true}>
+    })
+</script>
+
+
