@@ -182,7 +182,13 @@ switch ($op) {
             $savedFilename = $imageObj->getVar('realname');
         }
         // get dimension of image
-        $imageInfo = getimagesize(\WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $savedFilename);
+        if (!isset($savedFilename) || !file_exists(\WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $savedFilename)) {
+            \redirect_header('image.php?op=list', 3, \_AM_WGSLIDER_ERROR_FILE_NOT_FOUND);
+        }
+        $imageInfo = @getimagesize(\WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $savedFilename);
+        if ($imageInfo === false) {
+            \redirect_header('image.php?op=list', 3, \_AM_WGSLIDER_ERROR_FILE_NOT_FOUND);
+        }
         $width = $imageInfo[0];
         $height = $imageInfo[1];
         $imageObj->setVar('width', $width);
