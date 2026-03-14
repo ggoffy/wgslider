@@ -62,6 +62,7 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($slideshowCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav());
             }
+            $GLOBALS['xoopsTpl']->assign('token', $GLOBALS['xoopsSecurity']->getTokenHTML());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSLIDER_THEREARENT_SLIDESHOWS);
         }
@@ -133,6 +134,7 @@ switch ($op) {
         }
         $paramsJSON = json_encode($params);
         $slideshowObj->setVar('params', $paramsJSON);
+        $slideshowObj->setVar('status', Request::getInt('status'));
         // Insert Data
         if ($slideshowHandler->insert($slideshowObj)) {
                 \redirect_header('slideshow.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
@@ -196,6 +198,28 @@ switch ($op) {
                 $_SERVER['REQUEST_URI'], \_AM_WGSLIDER_SLIDESHOW_RESET_SURE);
             $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
+        }
+        break;
+    case 'change_status':
+        if (!$GLOBALS['xoopsSecurity']->check()) {
+            redirect_header('slideshow.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
+        }
+        if ($slsId > 0) {
+            $slideshowObj = $slideshowHandler->get($slsId);
+        } else {
+            \redirect_header('slideshow.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
+        $currentStatus = (int)$slideshowObj->getVar('status');
+        if (Constants::STATUS_OFFLINE === $currentStatus) {
+            $slideshowObj->setVar('status', Constants::STATUS_ONLINE );
+        } else {
+            $slideshowObj->setVar('status', Constants::STATUS_OFFLINE );
+        }
+        // Insert Data
+        if ($slideshowHandler->insert($slideshowObj)) {
+            \redirect_header('slideshow.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
+        } else {
+            \redirect_header('slideshow.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_STATUS_CHANGE_ERROR);
         }
         break;
 }

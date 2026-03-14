@@ -96,6 +96,9 @@ wgslider_slideshow:
         -
             name: params
             attributes: ' VARCHAR(2000)   NOT NULL DEFAULT '''''''' '
+        -
+            name: status
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
     keys:
         PRIMARY:
             columns: id

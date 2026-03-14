@@ -10,6 +10,7 @@
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_DESCR}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_TPL}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_PARAMS}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_STATUS}></th>
                 <th class="center width5"><{$smarty.const._AM_WGSLIDER_FORM_ACTION}></th>
             </tr>
         </thead>
@@ -27,6 +28,16 @@
                             <li><strong><{$key}>:</strong> <{$value}></li>
                         <{/foreach}>
                     </ul>
+                </td>
+                <td class='center'>
+                    <form action="slideshow.php" method="post" style="display:inline;">
+                        <{$token}>
+                        <input type="hidden" name="op" value="change_status">
+                        <input type="hidden" name="id" value="<{$slideshow.id}>">
+                        <input type="hidden" name="start" value="<{$start}>">
+                        <input type="hidden" name="limit" value="<{$limit}>">
+                        <input type="image"  src="<{$modPathIcon32}>status<{$slideshow.status}>.png" style="height:16px;border:0;">
+                    </form>
                 </td>
                 <td class="center  width5">
                     <a href="slideshow.php?op=edit&amp;id=<{$slideshow.id|default:false}>&amp;start=<{$start|default:0}>&amp;limit=<{$limit|default:0}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}>" ></a>

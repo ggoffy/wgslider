@@ -53,6 +53,7 @@ class Slideshow extends \XoopsObject
         $this->initVar('descr', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('tpl', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('params', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('status', \XOBJ_DTYPE_INT);
     }
 
     /**
@@ -141,6 +142,12 @@ class Slideshow extends \XoopsObject
             }
         }
         $form->addElement($paramTray);
+        // Form Select Status slsStatus
+        $slsStatus = $this->isNew() ? Constants::STATUS_OFFLINE : $this->getVar('status');
+        $slsStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $slsStatus);
+        $slsStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
+        $slsStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
+        $form->addElement($slsStatusSelect, true);
         // To Save
         $form->addElement(new \XoopsFormHidden('start', $this->start));
         $form->addElement(new \XoopsFormHidden('limit', $this->limit));
@@ -173,6 +180,12 @@ class Slideshow extends \XoopsObject
         $form->addElement(new \XoopsFormText(\_AM_WGSLIDER_SLIDESHOW_DESCR, 'descr', 50, 255, $this->getVar('descr')));
         // Form Editor TextArea slsParams
         $form->addElement(new \XoopsFormTextArea(\_AM_WGSLIDER_SLIDESHOW_PARAMS, 'params', $this->getVar('params', 'e'), 4, 47));
+        // Form Select Status slsStatus
+        $slsStatus = $this->isNew() ? Constants::STATUS_OFFLINE : $this->getVar('status');
+        $slsStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $slsStatus);
+        $slsStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
+        $slsStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
+        $form->addElement($slsStatusSelect, true);
         // To Save
         $form->addElement(new \XoopsFormHidden('start', $this->start));
         $form->addElement(new \XoopsFormHidden('limit', $this->limit));
