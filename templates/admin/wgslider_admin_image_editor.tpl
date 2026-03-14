@@ -133,7 +133,10 @@
                             formData.append('form_key', window.FORM_KEY);
 
                             fetch('image_editor.php', { method: 'POST', body: formData })
-                                .then(res => res.text())
+                                .then(res => {
+                                    if (!res.ok) throw new Error('Server error: ' + res.status);
+                                    return res.text();
+                                })
                                 .then(data => console.log('create crop finished', data))
                                 .catch(err => { console.error(err); alert('Crop failed'); });
 
