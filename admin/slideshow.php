@@ -135,7 +135,7 @@ switch ($op) {
         $slideshowObj->setVar('params', $paramsJSON);
         // Insert Data
         if ($slideshowHandler->insert($slideshowObj)) {
-                \redirect_header('slideshow.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
+                \redirect_header('slideshow.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $slideshowObj->getHtmlErrors());

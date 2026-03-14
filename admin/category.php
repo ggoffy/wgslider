@@ -74,7 +74,7 @@ switch ($op) {
         if ($catId > 0) {
             $categoryObj = $categoryHandler->get($catId);
         } else {
-            \redirect_header('category.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
+            \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
         }
         $currentStatus = (int)$categoryObj->getVar('status');
         if (Constants::STATUS_OFFLINE === $currentStatus) {
@@ -84,9 +84,9 @@ switch ($op) {
         }
         // Insert Data
         if ($categoryHandler->insert($categoryObj)) {
-            \redirect_header('category.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
+            \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
         } else {
-            \redirect_header('category.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_STATUS_CHANGE_ERROR);
+            \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_STATUS_CHANGE_ERROR);
         }
         break;
     case 'new':
@@ -135,13 +135,13 @@ switch ($op) {
         $categoryDatecreatedObj = \DateTime::createFromFormat(\_SHORTDATESTRING, Request::getString('datecreated'));
         if ($categoryDatecreatedObj === false) {
             // invalid date
-            \redirect_header('category.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_DATE);
+            \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_DATE);
         }
         $categoryObj->setVar('datecreated', $categoryDatecreatedObj->getTimestamp());
         $categoryObj->setVar('submitter', Request::getInt('submitter'));
         // Insert Data
         if ($categoryHandler->insert($categoryObj)) {
-            \redirect_header('category.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
+            \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $categoryObj->getHtmlErrors());

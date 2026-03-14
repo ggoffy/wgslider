@@ -106,16 +106,16 @@ switch ($op) {
         $imgRestore = $imgFinal . '.tmp';
         $ret = \rename($imgFinal, $imgRestore);
         if (!$ret) {
-            \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGSLIDER_ERROR_MOVE_FILE);
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_ERROR_MOVE_FILE);
         }
         $ret = \rename($imgTemp, $imgFinal);
         if (!$ret) {
             //try to restore previous file
             $ret = \rename($imgRestore, $imgFinal);
             if ($ret) {
-                \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGSLIDER_ERROR_MOVE_FILE_RESTORED);
+                \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_ERROR_MOVE_FILE_RESTORED);
             } else {
-                \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGSLIDER_ERROR_MOVE_FILE);
+                \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_ERROR_MOVE_FILE);
             }
         }
         // delete copy for restore
@@ -124,7 +124,7 @@ switch ($op) {
         $imageObj->setVar('submitter', $uid);
         // Insert Data
         if ($imageHandler->insert($imageObj, true)) {
-            \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGSLIDER_FORM_OK);
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_FORM_OK);
         }
         $GLOBALS['xoopsTpl']->assign('error', $imageObj->getHtmlErrors());
 

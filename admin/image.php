@@ -87,7 +87,7 @@ switch ($op) {
         if ($imgId > 0) {
             $imageObj = $imageHandler->get($imgId);
         } else {
-            \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
         }
         $currentStatus = (int)$imageObj->getVar('status');
         if (Constants::STATUS_OFFLINE === $currentStatus) {
@@ -97,9 +97,9 @@ switch ($op) {
         }
         // Insert Data
         if ($imageHandler->insert($imageObj)) {
-            \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
         } else {
-            \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_STATUS_CHANGE_ERROR);
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_STATUS_CHANGE_ERROR);
         }
         break;
     case 'new':
@@ -204,7 +204,7 @@ switch ($op) {
         $imageDatecreatedObj = \DateTime::createFromFormat(\_SHORTDATESTRING, Request::getString('datecreated'));
         if ($imageDatecreatedObj === false) {
             // invalid date
-            \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_DATE);
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_DATE);
         }
         $imageObj->setVar('datecreated', $imageDatecreatedObj->getTimestamp());
         $imageObj->setVar('submitter', Request::getInt('submitter'));
@@ -213,7 +213,7 @@ switch ($op) {
             if ('' !== $uploaderErrors) {
                 \redirect_header('image.php?op=edit&img_id=' . $imgId, 5, $uploaderErrors);
             } else {
-                \redirect_header('image.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
+                \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
             }
         }
         // Get Form
