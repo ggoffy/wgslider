@@ -40,6 +40,7 @@
                         <{$token}>
                         <input type="hidden" name="op" value="change_status">
                         <input type="hidden" name="id" value="<{$image.id}>">
+                        <input type="hidden" name="status_old" value="<{$image.status}>">
                         <input type="hidden" name="start" value="<{$start}>">
                         <input type="hidden" name="limit" value="<{$limit}>">
                         <input type="image"  src="<{$modPathIcon32}>status<{$image.status}>.png" style="height:16px;border:0;">

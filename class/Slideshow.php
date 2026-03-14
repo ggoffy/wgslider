@@ -144,10 +144,7 @@ class Slideshow extends \XoopsObject
         $form->addElement($paramTray);
         // Form Select Status slsStatus
         $slsStatus = $this->isNew() ? Constants::STATUS_OFFLINE : $this->getVar('status');
-        $slsStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $slsStatus);
-        $slsStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
-        $slsStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
-        $form->addElement($slsStatusSelect, true);
+        $form->addElement($this->buildStatusElement($slsStatus), true);
         // To Save
         $form->addElement(new \XoopsFormHidden('start', $this->start));
         $form->addElement(new \XoopsFormHidden('limit', $this->limit));
@@ -182,10 +179,7 @@ class Slideshow extends \XoopsObject
         $form->addElement(new \XoopsFormTextArea(\_AM_WGSLIDER_SLIDESHOW_PARAMS, 'params', $this->getVar('params', 'e'), 4, 47));
         // Form Select Status slsStatus
         $slsStatus = $this->isNew() ? Constants::STATUS_OFFLINE : $this->getVar('status');
-        $slsStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $slsStatus);
-        $slsStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
-        $slsStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
-        $form->addElement($slsStatusSelect, true);
+        $form->addElement($this->buildStatusElement($slsStatus), true);
         // To Save
         $form->addElement(new \XoopsFormHidden('start', $this->start));
         $form->addElement(new \XoopsFormHidden('limit', $this->limit));
@@ -195,6 +189,18 @@ class Slideshow extends \XoopsObject
         return $form;
     }
 
+    /**
+     * @public function buildStatusElement
+     * @param int $value
+     * @return \XoopsFormRadio
+     */
+    private function buildStatusElement(int $value): \XoopsFormRadio
+    {
+        $status = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $value);
+        $status->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
+        $status->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
+        return $status;
+    }
 
     /**
      * Get Values

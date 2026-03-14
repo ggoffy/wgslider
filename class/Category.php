@@ -157,14 +157,15 @@ class Category extends \XoopsObject
             $form->addElement($catSlideshowSelect, true);
             // Form Text Date Select catDatecreated
         } else {
-            $slsId   = $slideshowArr[1]->getVar('id');
-            $slsName = $slideshowArr[1]->getVar('name');
+            $singleSlideshow = \reset($slideshowArr);
+            if (false === $singleSlideshow) {
+                \redirect_header('category.php', 3, \_AM_WGSLIDER_CATEGORY_NO_SLIDESHOW);
+            }
+            $slsId   = $singleSlideshow->getVar('id');
+            $slsName = $singleSlideshow->getVar('name');
             $form->addElement(new \XoopsFormHidden('slideshow', $slsId));
             $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_CATEGORY_SLIDESHOW, $slsName));
-
         }
-
-
         $catDatecreated = $this->isNew() ? \time() : $this->getVar('datecreated');
         $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGSLIDER_DATECREATED, 'datecreated', '', $catDatecreated), true);
         // Form Select User catSubmitter

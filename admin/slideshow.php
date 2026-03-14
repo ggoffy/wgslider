@@ -202,7 +202,7 @@ switch ($op) {
         break;
     case 'change_status':
         if (!$GLOBALS['xoopsSecurity']->check()) {
-            redirect_header('slideshow.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
+            \redirect_header('slideshow.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
         }
         if ($slsId > 0) {
             $slideshowObj = $slideshowHandler->get($slsId);
