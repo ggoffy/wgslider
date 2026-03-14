@@ -32,7 +32,12 @@
                 <td class=''><img class='wgs-image-list' src="<{$wgslider_upload_url|default:false}>/images/<{$image.realname|default:false}><{$currentTime|default:''}>" alt="image" style="max-width:100px" ></td>
                 <td class='center'><{$image.width_text|default:''}></td>
                 <td class='center'><{$image.height_text|default:''}></td>
-                <td class=''><{$image.category_name|default:''}></td>
+                <td class=''>
+                    <{if $image.category_offline|default:false}>
+                        <img src="<{$modPathIcon16}>warning.png" alt="<{$smarty.const._AM_WGSLIDER_WARNING_CATEGORY_OFFLINE}>" title="<{$smarty.const._AM_WGSLIDER_WARNING_CATEGORY_OFFLINE}>">
+                    <{/if}>
+                    <{$image.category_name|default:''}>
+                </td>
                 <td class=''><{$image.datecreated_text|default:''}></td>
                 <td class=''><{$image.submitter_text|default:''}></td>
                 <td class='center'>

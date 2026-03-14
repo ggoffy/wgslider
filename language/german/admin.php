@@ -167,6 +167,8 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_ERROR_MOVE_FILE', 'Fehler: Datei konnte nicht verschoben werden!');
 \define('_AM_WGSLIDER_ERROR_MOVE_FILE_RESTORED', 'Fehler: Datei konnte nicht verschoben werden, vorherige Datei wurde wiederhergestellt!');
 \define('_AM_WGSLIDER_ERROR_FILE_NOT_FOUND', 'Fehler: Datei nicht gefunden!');
+\define('_AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE', 'Achtung: die ausgewählte Slideshow ist offline');
+\define('_AM_WGSLIDER_WARNING_CATEGORY_OFFLINE', 'Achtung: die ausgewählte Kategorie ist offline');
 // ---------------- Admin Others ----------------
 \define('_AM_WGSLIDER_ABOUT_MAKE_DONATION', 'Absenden');
 \define('_AM_WGSLIDER_SUPPORT_FORUM', 'Support-Forum');

@@ -167,6 +167,8 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_ERROR_MOVE_FILE', 'Error: moving file failed!');
 \define('_AM_WGSLIDER_ERROR_MOVE_FILE_RESTORED', 'Error: moving file failed, previous file has been restored!');
 \define('_AM_WGSLIDER_ERROR_FILE_NOT_FOUND', 'Error: file not found!');
+\define('_AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE', 'Attention: selected slideshow is offline');
+\define('_AM_WGSLIDER_WARNING_CATEGORY_OFFLINE', 'Attention: selected category is offline');
 // ---------------- Admin Others ----------------
 \define('_AM_WGSLIDER_ABOUT_MAKE_DONATION', 'Submit');
 \define('_AM_WGSLIDER_SUPPORT_FORUM', 'Support Forum');

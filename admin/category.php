@@ -53,6 +53,13 @@ switch ($op) {
         if ($categoryCount > 0) {
             foreach (\array_keys($categoryAll) as $i) {
                 $category = $categoryAll[$i]->getValuesCategory();
+                // check whether slideshow is still online
+                $slideshowHandler = $helper->getHandler('Slideshow');
+                $crSlideshow = new \CriteriaCompo();
+                $crSlideshow->add(new \Criteria('id', $category['slideshow']));
+                $crSlideshow->add(new \Criteria('status', Constants::STATUS_ONLINE));
+                $slideshowCount = $slideshowHandler->getCount($crSlideshow);
+                $category['slideshow_offline'] = (0 === $slideshowCount);
                 $GLOBALS['xoopsTpl']->append('category_list', $category);
                 unset($category);
             }

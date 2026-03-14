@@ -24,7 +24,13 @@
                 <td class=''><{$category.name|default:false}></td>
                 <td class=''><{$category.display_text|default:false}></td>
                 <td class=''><{$category.key|default:false}></td>
-                <td class=''><{$category.slideshow_text|default:false}></td>
+                <td class=''>
+                    <{$category.slideshow_text|default:false}>
+                    <{if $category.slideshow_offline|default:false}>
+                        <br><img src="<{$modPathIcon32}>warning.png" alt="<{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>" title="<{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>">
+                        <{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>
+                    <{/if}>
+                </td>
                 <td class=''><{$category.datecreated_text|default:false}></td>
                 <td class=''><{$category.submitter_text|default:false}></td>
                 <td class='center'>

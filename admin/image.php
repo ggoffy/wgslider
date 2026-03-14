@@ -57,6 +57,12 @@ switch ($op) {
         if ($imageCount > 0) {
             foreach (\array_keys($imageAll) as $i) {
                 $image = $imageAll[$i]->getValuesImage();
+                $CategoryHandler = $helper->getHandler('Category');
+                $crCategory = new \CriteriaCompo();
+                $crCategory->add(new \Criteria('id', $image['Category']));
+                $crCategory->add(new \Criteria('status', Constants::STATUS_ONLINE));
+                $categoryCount = $CategoryHandler->getCount($crCategory);
+                $image['category_offline'] = (0 === $categoryCount);
                 $GLOBALS['xoopsTpl']->append('image_list', $image);
                 unset($image);
             }
