@@ -27,8 +27,6 @@
     background-color: rgba(0,0,0,0.6);
     z-index: 1000;
     overflow: auto;
-
-    display: flex;
     justify-content: center;
     align-items: center;
 }

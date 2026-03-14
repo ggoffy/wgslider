@@ -65,9 +65,9 @@
 
                 <!-- Actions -->
                 <div class="ie-group ie-actions">
-                    <button id="btnCropPreview" class="ie-btn-crop" data-method="getCroppedCanvas" data-option='{"maxWidth":4096,"maxHeight":4096,"save":0}'>Preview</button>
-                    <button id="btnCropCreate" class="ie-btn-crop" data-method="getCroppedCanvas" data-option='{"maxWidth":4096,"maxHeight":4096,"save":1}'>Create</button>
-                    <a id="btnCropApply" class="ie-btn-crop disabled" href="#">Apply</a>
+                    <button id="btnCropPreview" class="ie-btn-crop" data-method="getCroppedCanvas" data-option='{"maxWidth":4096,"maxHeight":4096,"save":0}'><{$smarty.const._PREVIEW}></button>
+                    <button id="btnCropCreate" class="ie-btn-crop" data-method="getCroppedCanvas" data-option='{"maxWidth":4096,"maxHeight":4096,"save":1}'><{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CREATE}></button>
+                    <a id="btnCropApply" class="ie-btn-crop disabled" href="#"><{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_APPLY}></a>
                     <button class="ie-btn-crop" onclick='history.go(-1);return true;'>Cancel</button>
                 </div>
             </div>
