@@ -245,7 +245,9 @@ switch ($op) {
             }
             if ($imageHandler->delete($imageObj)) {
                 $imgRealname = $imageObj->getVar('realname');
-                unlink(\WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $imgRealname);
+                if (file_exists(\WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $imgRealname)) {
+                    unlink(\WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $imgRealname);
+                }
                 \redirect_header('image.php', 3, \_AM_WGSLIDER_FORM_DELETE_OK);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error', $imageObj->getHtmlErrors());
