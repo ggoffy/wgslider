@@ -146,6 +146,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             $slideshowObj->setVar('name', $slider['name']);
             $slideshowObj->setVar('descr', $slider['descr']);
             $slideshowObj->setVar('tpl', $slider['tpl']);
+            $slideshowObj->setVar('status', $slider['status']);
             $slideshowObj->setVar('params', $slider['params']);
             $slideshowHandler->insert($slideshowObj);
         }
