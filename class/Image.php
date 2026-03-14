@@ -151,7 +151,7 @@ class Image extends \XoopsObject
         $form->addElement($imgStatusSelect);
         // Form Text imgWeight
         $imgWeight = $this->isNew() ? 0 : $this->getVar('weight');
-        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_IMAGE_WIDTH, $imgWeight));
+        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_IMAGE_WEIGHT, $imgWeight));
         // Form Text Date Select imgDatecreated
         $imgDatecreated = $this->isNew() ? \time() : $this->getVar('datecreated');
         $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGSLIDER_IMAGE_DATECREATED, 'datecreated', '', $imgDatecreated), true);

@@ -86,6 +86,7 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_IMAGE_PREVIEW', 'Preview');
 \define('_AM_WGSLIDER_IMAGE_WIDTH', 'Width');
 \define('_AM_WGSLIDER_IMAGE_HEIGHT', 'Height');
+\define('_AM_WGSLIDER_IMAGE_WEIGHT', 'Weight');
 \define('_AM_WGSLIDER_IMAGE_CATEGORY', 'Category');
 \define('_AM_WGSLIDER_IMAGE_STATUS', 'Status');
 \define('_AM_WGSLIDER_IMAGE_DATECREATED', 'Datecreated');
