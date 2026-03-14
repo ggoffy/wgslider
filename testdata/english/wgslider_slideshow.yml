@@ -10,12 +10,12 @@
     name: 'Bootstrap3 Carousel'
     descr: 'Bootstrap3 Carousel requires a theme based on Bootstrap 3'
     tpl: wgslider_slideshow_bt3.tpl
-    params: '{"bt3_data_interval":4000,"bt3_data_pause":"hover","bt3_data_wrap":"true","bt3_data_keyboard":"true","bt3_show_indicators":"true","bt3_show_prev_next":"true","bt3_fullsize":"true"}'
+    params: '{"bt3_data_interval":4000,"bt3_data_pause":"","bt3_data_wrap":"true","bt3_data_keyboard":"true","bt3_show_indicators":"true","bt3_show_prev_next":"true","bt3_fullsize":"true"}'
     status: '2'
 -
     id: '3'
     name: 'Bootstrap5 Carousel'
     descr: 'Bootstrap5 Carousel requires a theme based on Bootstrap 5'
     tpl: wgslider_slideshow_bt5.tpl
-    params: '{"bt5_data_interval":4000,"bt5_data_pause":"hover","bt5_data_wrap":"true","bt5_data_keyboard":"true","bt5_data_touch":"true","bt5_show_indicators":"true","bt5_show_prev_next":"true","bt5_show_captions":"true","bt5_fullsize":"true"}'
+    params: '{"bt5_data_interval":4000,"bt5_data_pause":"","bt5_data_wrap":"true","bt5_data_keyboard":"true","bt5_data_touch":"true","bt5_show_indicators":"true","bt5_show_prev_next":"true","bt5_show_captions":"true","bt5_fullsize":"true"}'
     status: '2'
