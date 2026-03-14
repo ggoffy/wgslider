@@ -1,0 +1,151 @@
+<style>
+    .help-ul,
+    .help-ol {
+        padding-left: 30px;
+        margin-left: 0;
+    }
+    .help-code{
+        background:#f4f4f4;
+        border:1px solid #ddd;
+        padding:8px;
+        font-family:monospace;
+        margin:10px 0;
+    }
+</style>
+<div id="help-template" class="outer">
+    <h1 class="head">Hilfe:
+        <a class="ui-corner-all tooltip" href="<{$xoops_url}>/modules/wgslider/admin/index.php"
+           title="Zurück zur Administration von wgSlider"> wgSlider <img src="<{xoAdminIcons 'home.png'}>"
+                                                                         alt="Zur Administration von wgSlider">
+        </a></h1>
+    <!-- -----Help Content ---------- -->
+    <p class="even">
+        wgSlider ist ein Modul für das XOOPS CMS, mit dem Administratoren Bilder-Slideshows einfach erstellen und verwalten können. Bilder werden in Kategorien organisiert und als Slider über Blöcke oder Smarty-Variablen angezeigt.
+    </p>
+    <h4 class="odd">Funktionen</h4>
+    <ul class="help-ul">
+        <li>Kategorieverwaltung</li>
+        <li>Bild-Upload und Verwaltung</li>
+        <li>Mehrere Slideshow-Typen</li>
+        <li>Unterstützung für Bootstrap-Slideshows</li>
+        <li>Anzeige als Block oder Smarty-Variable</li>
+        <li>Integrierter Bildeditor</li>
+        <li>Sortierung der Bilder nach Gewicht</li>
+        <li>Statuskontrolle (online/offline)</li>
+        <li>Unterstützung für Modulkopien</li>
+    </ul>
+    <h4 class="odd">Installation</h4>
+    <ol class="help-ol">
+        <li>Modulordner kopieren nach</li>
+        <div class="help-code">
+            /modules/wgslider
+        </div>
+        <li>XOOPS-Administration öffnen</li>
+        <li>Gehe zu</li>
+        <div class="help-code">
+            System → Module
+        </div>
+        <li><b>wgSlider</b> installieren</li>
+    </ol>
+    <h4 class="odd">Modulstruktur</h4>
+    <p class="even">
+        Das Modul basiert auf drei Hauptelementen:
+    </p>
+    <ul class="help-ul">
+        <li>Kategorien</li>
+        <li>Bilder</li>
+        <li>Slideshows</li>
+    </ul>
+    <h4 class="odd">Kategorien</h4>
+    <p class="even">
+        Kategorien organisieren Bilder und legen fest, wie sie angezeigt werden. Jede Kategorie kann eine andere Slideshow verwenden.
+    </p>
+    <ul class="help-ul">
+        <li>Name</li>
+        <li>Anzeigetyp</li>
+        <li>Maximale Anzahl an Bildern</li>
+        <li>Bildbreite und -höhe</li>
+        <li>Status</li>
+    </ul>
+    <div class="tip">
+        Tipp: Erstellen Sie mehrere Kategorien, um unterschiedliche Slider auf verschiedenen Seiten anzuzeigen.
+    </div>
+    <h4 class="odd">Bilder</h4>
+    <p class="even">
+        Bilder werden hochgeladen und den Kategorien zugeordnet. Jedes Bild kann zusätzliche Informationen enthalten.
+    </p>
+    <ul class="help-ul">
+        <li>Name</li>
+        <li>Tooltip-Text</li>
+        <li>Gewicht (Anzeigereihenfolge)</li>
+        <li>Status</li>
+        <li>Einreicher</li>
+    </ul>
+    <h4 class="odd">Slideshows</h4>
+    <p class="even">
+        Slideshows legen fest, wie Bilder präsentiert werden. Verschiedene Templates können verwendet werden.
+    </p>
+    Beispiele:
+    <ul class="help-ul">
+        <li>Standard-Slideshow</li>
+        <li>Bootstrap 3 Carousel</li>
+        <li>Bootstrap 5 Carousel</li>
+    </ul>
+    <h4 class="odd">Slideshows anzeigen</h4>
+    <h5 class="odd">Mit Blöcken</h5>
+    <p class="even">
+        Slideshows können als XOOPS-Blöcke angezeigt werden.
+    </p>
+    Schritte:
+    <ol class="help-ol">
+        <li>Gehe zu</li>
+        <div class="help-code">
+            System → Blöcke
+        </div>
+        <li>Block <b>wgSlider Slideshow</b> aktivieren</li>
+        <li>Kategorie auswählen</li>
+        <li>Blockposition wählen</li>
+    </ol>
+    <h5 class="odd">Mit Smarty-Variablen</h5>
+    <p class="even">
+        Wenn eine Kategorie mit einem Smarty-Key konfiguriert ist, kann sie direkt in einer Vorlage verwendet werden.
+    </p>
+    Beispiel:
+    <div class="help-code">
+        &lt;{$wgslider_meinekategorie}&gt;
+    </div>
+    <h4 class="odd">Bildeditor</h4>
+    <p class="even">
+        wgSlider enthält einen integrierten Bildeditor.
+    </p>
+    Verfügbare Werkzeuge:
+    <ul class="help-ul">
+        <li>Bild zuschneiden</li>
+        <li>Bild drehen</li>
+        <li>Bild spiegeln</li>
+        <li>Ein-/Auszoomen</li>
+        <li>Seitenverhältnis kontrollieren</li>
+    </ul>
+    <h4 class="odd">Moduleinstellungen</h4>
+    <p class="even">
+        Folgende Einstellungen können in den Moduleinstellungen konfiguriert werden:
+    </p>
+    <ul class="help-ul">
+        <li>Maximale Uploadgröße</li>
+        <li>Erlaubte MIME-Typen</li>
+        <li>Maximale Bildbreite</li>
+        <li>Maximale Bildhöhe</li>
+        <li>Admin-Pagination</li>
+        <li>Soziale Lesezeichen</li>
+    </ul>
+    <h4 class="odd">Tipps</h4>
+    <ul class="help-ul">
+        <li>Verwenden Sie Bilder mit identischer Größe für ein optimales Slider-Layout</li>
+        <li>Verwenden Sie Gewichtsangaben, um die Bildreihenfolge zu steuern</li>
+        <li>Nutzen Sie Bootstrap-Themes für beste Kompatibilität</li>
+        <li>Fügen Sie Tooltips für besseres SEO hinzu</li>
+    </ul>
+    <h4 class="odd">Support</h4>
+    <p class="even">XOOPS Projekt https://xoops.org</p>
+    <!-- -----Help Content ---------- -->
+</div>

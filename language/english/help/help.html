@@ -1,27 +1,152 @@
+<style>
+    .help-ul,
+    .help-ol {
+        padding-left: 30px;
+        margin-left: 0;
+    }
+    .help-code{
+        background:#f4f4f4;
+        border:1px solid #ddd;
+        padding:8px;
+        font-family:monospace;
+        margin:10px 0;
+    }
+</style>
 <div id="help-template" class="outer">
     <h1 class="head">Help:
         <a class="ui-corner-all tooltip" href="<{$xoops_url}>/modules/wgslider/admin/index.php"
            title="Back to the administration of wgSlider"> wgSlider <img src="<{xoAdminIcons 'home.png'}>"
-                                                                       alt="Back to the Administration of wgSlider">
+                                                                         alt="Back to the Administration of wgSlider">
         </a></h1>
     <!-- -----Help Content ---------- -->
-    <h4 class="odd">Description</h4>
     <p class="even">
-        The wgSlider module lets you create and manage image sliders in XOOPS.<br><br>
-    </p>
-    <h4 class="odd">Install/uninstall</h4>
-    <p class="even">
-No special measures necessary, follow the standard installation process and extract the wgslider folder into the ../modules directory. Install the module through Admin -> System Module -> Modules. <br><br>
-Detailed instructions on installing modules are available in the <a href="https://goo.gl/adT2i">XOOPS Operations Manual</a>
+        wgSlider is a module for the XOOPS CMS that allows administrators to create and manage image slideshows easily. Images are organized into categories and displayed as sliders using blocks or template variables.
     </p>
     <h4 class="odd">Features</h4>
+    <ul class="help-ul">
+        <li>Category management</li>
+        <li>Image upload and management</li>
+        <li>Multiple slideshow types</li>
+        <li>Bootstrap slideshow support</li>
+        <li>Display as block or Smarty variable</li>
+        <li>Integrated image editor</li>
+        <li>Image weight sorting</li>
+        <li>Status control (online/offline)</li>
+        <li>Module cloning support</li>
+    </ul>
+    <h4 class="odd">Installation</h4>
+    <ol class="help-ol">
+        <li>Copy the module folder into</li>
+        <div class="help-code">
+            /modules/wgslider
+        </div>
+        <li>Open XOOPS administration</li>
+        <li>Go to</li>
+        <div class="help-code">
+            System → Modules
+        </div>
+        <li>Install <b>wgSlider</b></li>
+    </ol>
+    <h4 class="odd">Module Structure</h4>
     <p class="even">
-        Create categories, upload images, and build slideshows for frontend display.<br>
-        You can configure slideshow behavior and templates from the module administration area.<br><br>
+        The module is based on three main elements:
     </p>
-    <h4 class="odd">Tutorial</h4>
+    <ul class="help-ul">
+        <li>Categories</li>
+        <li>Images</li>
+        <li>Slideshows</li>
+    </ul>
+    <h4 class="odd">Categories</h4>
     <p class="even">
-        Tutorial is coming soon
+        Categories organize images and define how they will be displayed. Each category can use a different slideshow.
     </p>
+    <ul class="help-ul">
+        <li>Name</li>
+        <li>Display type</li>
+        <li>Maximum number of images</li>
+        <li>Image width and height</li>
+        <li>Status</li>
+    </ul>
+    <div class="tip">
+        Tip: Create multiple categories to display different sliders on different pages.
+    </div>
+    <h4 class="odd">Images</h4>
+    <p class="even">
+        Images are uploaded and assigned to categories. Each image can contain additional information.
+    </p>
+    <ul class="help-ul">
+        <li>Name</li>
+        <li>Tooltip text</li>
+        <li>Weight (display order)</li>
+        <li>Status</li>
+        <li>Submitter</li>
+    </ul>
+    <h4 class="odd">Slideshows</h4>
+    <p class="even">
+        Slideshows define how images are presented. Different templates can be used.
+    </p>
+    Examples:
+    <ul class="help-ul">
+        <li>Default slideshow</li>
+        <li>Bootstrap 3 Carousel</li>
+        <li>Bootstrap 5 Carousel</li>
+    </ul>
+    <h4 class="odd">Displaying Slideshows</h4>
+    <h5 class="odd">Using Blocks</h5>
+    <p class="even">
+        Slideshows can be displayed as XOOPS blocks.
+    </p>
+    Steps:
+    <ol class="help-ol">
+        <li>Go to</li>
+        <div class="help-code">
+            System → Blocks
+        </div>
+        <li>Enable block <b>wgSlider Slideshow</b></li>
+        <li>Select category</li>
+        <li>Choose block position</li>
+    </ol>
+    <h5 class="odd">Using Smarty Variables</h5>
+    <p class="even">
+        If a category is configured with a Smarty key, you can use it directly inside a template.
+    </p>
+    Example:
+    <div class="help-code">
+        &lt;{$wgslider_mycategory}&gt;
+    </div>
+    <h4 class="odd">Image Editor</h4>
+    <p class="even">
+        wgSlider includes an integrated image editor.
+    </p>
+    Available tools:
+    <ul class="help-ul">
+        <li>Crop image</li>
+        <li>Rotate image</li>
+        <li>Flip image</li>
+        <li>Zoom in/out</li>
+        <li>Aspect ratio control</li>
+    </ul>
+    <h4 class="odd">Module Preferences</h4>
+    <p class="even">
+        The following settings can be configured in the module preferences:
+    </p>
+    <ul class="help-ul">
+        <li>Maximum upload size</li>
+        <li>Allowed MIME types</li>
+        <li>Maximum image width</li>
+        <li>Maximum image height</li>
+        <li>Admin pagination</li>
+        <li>Social bookmarks</li>
+    </ul>
+    <h4 class="odd">Tips</h4>
+    <ul class="help-ul">
+        <li>Use images with identical sizes for best slider layout</li>
+        <li>Use weight values to control image order</li>
+        <li>Use Bootstrap themes for best compatibility</li>
+        <li>Add tooltips for better SEO</li>
+    </ul>
+    <h4 class="odd">Support</h4>
+    <p class="even">XOOPS Project https://xoops.org</p>
     <!-- -----Help Content ---------- -->
 </div>
+
