@@ -85,16 +85,25 @@ switch ($op) {
     case 'cropimage':
         // save base64_image and resize to maxwidth/maxheight
         $base64_image_content = Request::getString('croppedImage');
-        if (\preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64_image_content, $result)) {
+        if (!\preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64_image_content, $result)) {
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_INVALID_VALUE);
+        }
+        $mime = 'image/' . \strtolower($result[2]);
+        if (!\in_array($mime, ['image/jpeg', 'image/png', 'image/gif'], true)) {
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_INVALID_VALUE);
+        }
+        if (\is_file($imgTemp)) {
             \unlink($imgTemp);
-            $type = $result[2];
-            \file_put_contents($imgTemp, base64_decode(\str_replace($result[1], '', $base64_image_content), true));
+        }
+        $payload = \base64_decode(\str_replace($result[1], '', $base64_image_content), true);
+        if (false === $payload || false === \file_put_contents($imgTemp, $payload)) {
+            \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, _AM_WGSLIDER_INVALID_VALUE);
         }
 
         $imgHandler                = new Resizer();
         $imgHandler->sourceFile    = $imgTemp;
         $imgHandler->endFile       = $imgTemp;
-        $imgHandler->imageMimetype = 'image/jpeg';
+        $imgHandler->imageMimetype = $mime;
         $imgHandler->maxWidth      = $maxwidth;
         $imgHandler->maxHeight     = $maxheight;
         $ret                       = $imgHandler->resizeImage();
