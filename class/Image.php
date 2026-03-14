@@ -131,9 +131,6 @@ class Image extends \XoopsObject
         // Form Text imgHeight
         $imgHeight = $this->isNew() ? '0' : $this->getVar('height');
         $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_IMAGE_HEIGHT,  $imgHeight));
-        // Form Text imgWeight
-        $imgWeight = $this->isNew() ? '0' : $this->getVar('weight');
-        $form->addElement(new \XoopsFormHidden('weight',  $imgWeight));
         // Form Table category
         $categoryHandler = $helper->getHandler('Category');
         $imgCategorySelect = new \XoopsFormSelect(\_AM_WGSLIDER_IMAGE_CATEGORY, 'category', $this->getVar('category'));
@@ -152,7 +149,8 @@ class Image extends \XoopsObject
         $imgStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
         $form->addElement($imgStatusSelect);
         // Form Text imgWeight
-        $imgWeight = $this->isNew() ? 0 : $this->getVar('weight');
+        $imgWeight = $this->isNew() ? '0' : $this->getVar('weight');
+        $form->addElement(new \XoopsFormHidden('weight',  $imgWeight));
         $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_IMAGE_WEIGHT, $imgWeight));
         // Form Text Date Select imgDatecreated
         $imgDatecreated = $this->isNew() ? \time() : $this->getVar('datecreated');
