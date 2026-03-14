@@ -150,7 +150,7 @@ switch ($op) {
                 $helper->getConfig('mimetypes_image'),
                 $helper->getConfig('maxsize_image'), null, null);
             if ($uploader->fetchMedia($_POST['xoops_upload_file'][0])) {
-                $extension = \preg_replace('/^.+\.([^.]+)$/sU', '', $filename);
+                $extension = \pathinfo($filename, PATHINFO_EXTENSION);
                 $imgName = \str_replace(' ', '', $imgNameDef) . '.' . $extension;
                 $uploader->setPrefix($imgName);
                 $uploader->fetchMedia($_POST['xoops_upload_file'][0]);
