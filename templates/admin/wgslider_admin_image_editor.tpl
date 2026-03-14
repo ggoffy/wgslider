@@ -68,7 +68,7 @@
                     <button id="btnCropPreview" class="ie-btn-crop" data-method="getCroppedCanvas" data-option='{"maxWidth":4096,"maxHeight":4096,"save":0}'><{$smarty.const._PREVIEW}></button>
                     <button id="btnCropCreate" class="ie-btn-crop" data-method="getCroppedCanvas" data-option='{"maxWidth":4096,"maxHeight":4096,"save":1}'><{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CREATE}></button>
                     <a id="btnCropApply" class="ie-btn-crop disabled" href="#"><{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_APPLY}></a>
-                    <button class="ie-btn-crop" onclick='history.go(-1);return true;'>Cancel</button>
+                    <button class="ie-btn-crop" onclick='history.go(-1);return true;'><{$smarty.const._CANCEL}></button>
                 </div>
             </div>
         </div>
@@ -184,7 +184,7 @@
     const modal = document.getElementById('getWgsImageModal');
     const closeBtn = modal.querySelector('.wgs-modal-close');
     closeBtn.onclick = () => modal.style.display = 'none';
-    window.onclick = e => { if(e.target===modal) modal.style.display='none'; };
+    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
     document.addEventListener('keydown', e => { if(e.key==='Escape') modal.style.display='none'; });
 </script>
 
