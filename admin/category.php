@@ -166,12 +166,17 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('category.php'));
         $categoryObj = $categoryHandler->get($catId);
         $catName = $categoryObj->getVar('name');
-        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
+        if (1 === Request::getInt('ok')) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('category.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             if ($categoryHandler->delete($categoryObj)) {
-                \redirect_header('category.php', 3, \_AM_WGSLIDER_FORM_DELETE_OK);
+                //delete all images of this category
+                if ($imageHandler->deleteImagesOfCategory($catId)){
+                    \redirect_header('category.php', 3, \_AM_WGSLIDER_CATEGORY_DELETE_OK);
+                } else {
+                    \redirect_header('category.php', 3, \_AM_WGSLIDER_CATEGORY_DELETE_FAILED);
+                }
             } else {
                 $GLOBALS['xoopsTpl']->assign('error', $categoryObj->getHtmlErrors());
             }
@@ -179,7 +184,7 @@ switch ($op) {
             $customConfirm = new Common\Confirm(
                 ['ok' => 1, 'id' => $catId, 'start' => $start, 'limit' => $limit, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(\_AM_WGSLIDER_FORM_SURE_DELETE, $catName));
+                \sprintf(\_AM_WGSLIDER_CATEGORY_SURE_DELETE, $catName));
             $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }

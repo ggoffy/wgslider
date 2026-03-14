@@ -73,7 +73,9 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_CATEGORY_SLIDESHOW', 'Diashow');
 \define('_AM_WGSLIDER_CATEGORY_DATECREATED', 'Erstellt am');
 \define('_AM_WGSLIDER_CATEGORY_SUBMITTER', 'Eingereicht von');
-
+\define('_AM_WGSLIDER_CATEGORY_SURE_DELETE', "Möchten Sie die Kategorie wirklich löschen: <b><span style='color : Red;'>%s </span></b><br>Es werden auch alle Bilder dieser Kategorie gelöscht!");
+\define('_AM_WGSLIDER_CATEGORY_DELETE_OK', 'Kategorie und alle Bilder erfolgreich gelöscht');
+\define('_AM_WGSLIDER_CATEGORY_DELETE_FAILED', 'Kategorie gelöscht, aber beim Löschen der Bilder ist ein Fehler aufgetreten!');
 // Image add/edit
 \define('_AM_WGSLIDER_IMAGE_ADD', 'Bild hinzufügen');
 \define('_AM_WGSLIDER_IMAGE_EDIT', 'Bild bearbeiten');

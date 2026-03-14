@@ -82,7 +82,7 @@ class ImageHandler extends \XoopsPersistableObjectHandler
      * @param string $order
      * @return int
      */
-    public function getCountImage(int $start = 0, int $limit = 0, string $sort = 'weight', string $order = 'ASC'): int
+    public function getCountImage(int $start = 0, int $limit = 0, string $sort = 'category ASC, weight', string $order = 'ASC'): int
     {
         $crCountImage = new \CriteriaCompo();
         $crCountImage = $this->getImageCriteria($crCountImage, $start, $limit, $sort, $order);
@@ -97,7 +97,7 @@ class ImageHandler extends \XoopsPersistableObjectHandler
      * @param string $order
      * @return array
      */
-    public function getAllImage(int $start = 0, int $limit = 0, string $sort = 'weight', string $order = 'ASC'): array
+    public function getAllImage(int $start = 0, int $limit = 0, string $sort = 'category ASC, weight', string $order = 'ASC'): array
     {
         $crAllImage = new \CriteriaCompo();
         $crAllImage = $this->getImageCriteria($crAllImage, $start, $limit, $sort, $order);
@@ -141,5 +141,33 @@ class ImageHandler extends \XoopsPersistableObjectHandler
             $max = $obj->getVar('weight');
         }
         return $max;
+    }
+
+    /**
+     * Delete all Image of given category
+     * @param int $catId
+     * @return bool
+     */
+    public function deleteImagesOfCategory(int $catId): bool
+    {
+        $crImage = new \CriteriaCompo();
+        $crImage->add(new \Criteria('category', $catId));
+        $imageAll = $this->getAll($crImage);
+        $errors = 0;
+        foreach (\array_keys($imageAll) as $i) {
+            $imageRealname = $imageAll[$i]->getVar('realname');
+            $imgPath = \WGSLIDER_UPLOAD_IMAGE_PATH . '/' . $imageRealname;
+            if ($this->delete($imageAll[$i])) {
+                if (file_exists($imgPath)) {
+                    unlink($imgPath);
+                    if (file_exists($imgPath)) {
+                        $errors++;
+                    }
+                }
+            } else {
+                $errors++;
+            }
+        }
+        return (0 !== $errors);
     }
 }

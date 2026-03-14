@@ -73,7 +73,9 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_CATEGORY_SLIDESHOW', 'Slideshow');
 \define('_AM_WGSLIDER_CATEGORY_DATECREATED', 'Datecreated');
 \define('_AM_WGSLIDER_CATEGORY_SUBMITTER', 'Submitter');
-
+\define('_AM_WGSLIDER_CATEGORY_SURE_DELETE', "Are you sure to delete category: <b><span style='color : Red;'>%s </span></b><br>All images of this category will be deleted also!");
+\define('_AM_WGSLIDER_CATEGORY_DELETE_OK', 'Category and all images of this category successfully deleted');
+\define('_AM_WGSLIDER_CATEGORY_DELETE_FAILED', 'Category deleted, but error while deleting images!');
 // Image add/edit
 \define('_AM_WGSLIDER_IMAGE_ADD', 'Add Image');
 \define('_AM_WGSLIDER_IMAGE_EDIT', 'Edit Image');

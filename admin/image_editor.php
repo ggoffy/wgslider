@@ -47,9 +47,8 @@ if ('cropimage' === $op) {
 
 $imageObj = $imageHandler->get($imageId);
 $imgName = $imageObj->getVar('realname');
-$imageDir = '/uploads/wgslider/images/';
-$imgPath = \XOOPS_ROOT_PATH . $imageDir;
-$imgUrl = \XOOPS_URL . $imageDir;
+$imgPath = \WGSLIDER_UPLOAD_IMAGE_PATH . '/';
+$imgUrl = \WGSLIDER_UPLOAD_IMAGE_URL  . '/';
 $imgFinal = $imgPath . $imgName;
 $imgTemp = \WGSLIDER_UPLOAD_PATH . '/temp/' . $imgName;
 
