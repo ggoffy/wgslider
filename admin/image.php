@@ -211,7 +211,7 @@ switch ($op) {
         // Insert Data
         if ($imageHandler->insert($imageObj)) {
             if ('' !== $uploaderErrors) {
-                \redirect_header('image.php?op=edit&img_id=' . $imgId, 5, $uploaderErrors);
+                \redirect_header('image.php?op=edit&id=' . $imgId, 5, $uploaderErrors);
             } else {
                 \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_FORM_OK);
             }
