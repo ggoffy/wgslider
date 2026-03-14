@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/*
+ You may not change or alter any portion of this comment or credits
+ of supporting developers from this source code or any supporting source code
+ which is considered copyrighted (c) material of the original comment or credit authors.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*/
+/**
+ * wgTeams module for xoops
+ *
+ * @copyright       The XOOPS Project (https://xoops.org)
+ * @license         GPL 2.0 or later
+ * @package         wgteams
+ * @author          Goffy - Wedega.com - Email:<webmaster@wedega.com> - Website:<https://wedega.com>
+ */
+
+.imageeditor-img{
+    padding:2px;
+    border:1px solid #cccccc;
+}
+
+.ie-toolbar{position:sticky;top:10px;z-index:100;display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:transparent;border-radius:6px;margin-top:15px;}
+.ie-group{display:flex;gap:4px;padding-right:10px;border-right:1px solid #444;}
+.ie-group:last-child{border-right:none;}
+.ie-btn-crop{position:relative;background:#3a3a3a;color:#fff;border:none;padding:6px 10px;border-radius:4px;cursor:pointer;transition:all .15s;}
+.ie-btn-crop:hover{background:#505050;}
+.ie-btn-crop.active{background:#2d7ef7;}
+.ie-primary{background:#2d7ef7 !important;}
+.crop-size-indicator{margin-top:10px;font-size:14px;font-weight:bold;color:#444;}
+.ie-btn-crop-tooltip:hover::after{content:attr(title);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:5px 10px;border-radius:4px;font-size:12px;white-space:nowrap;z-index:1000;}
+.ie-btn-crop-tooltip:hover::before{content:"";position:absolute;bottom:110%;left:50%;transform:translateX(-50%);border-width:5px;border-style:solid;border-color:#333 transparent transparent transparent;}
+#btnCropApply{text-decoration: none;}
+
+.modern-crop-modal .modal-dialog {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.crop-modal-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* dark background */
+.modern-crop-modal .modal-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.crop-preview-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.crop-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crop-image-wrapper img,
+.crop-image-wrapper canvas {
+    max-width: 90vw;
+    max-height: 75vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* Close Button */
+.crop-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    font-size: 26px;
+    line-height: 40px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    cursor: pointer;
+}
+
+.crop-close:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+/* Buttons under the image */
+.crop-actions {
+    margin-top: 20px;
+    text-align: center;
+}
