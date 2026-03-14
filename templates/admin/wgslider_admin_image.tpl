@@ -14,9 +14,9 @@
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_WIDTH}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_HEIGHT}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_CATEGORY}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_DATECREATED}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_SUBMITTER}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_STATUS}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_DATECREATED}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_SUBMITTER}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_STATUS}></th>
                 <th class="center width5"><{$smarty.const._AM_WGSLIDER_FORM_ACTION}></th>
             </tr>
         </thead>

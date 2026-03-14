@@ -144,7 +144,7 @@ class Image extends \XoopsObject
             // TODO
             $imgStatus = $this->getVar('status');
         }
-        $imgStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_IMAGE_STATUS, 'status', $imgStatus);
+        $imgStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $imgStatus);
         $imgStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
         $imgStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
         $form->addElement($imgStatusSelect);
@@ -154,11 +154,11 @@ class Image extends \XoopsObject
         $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_IMAGE_WEIGHT, $imgWeight));
         // Form Text Date Select imgDatecreated
         $imgDatecreated = $this->isNew() ? \time() : $this->getVar('datecreated');
-        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGSLIDER_IMAGE_DATECREATED, 'datecreated', '', $imgDatecreated), true);
+        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGSLIDER_DATECREATED, 'datecreated', '', $imgDatecreated), true);
         // Form Select User imgSubmitter
         $uidCurrent = \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->uid() : 0;
         $imgSubmitter = $this->isNew() ? $uidCurrent : $this->getVar('submitter');
-        $form->addElement(new \XoopsFormSelectUser(\_AM_WGSLIDER_IMAGE_SUBMITTER, 'submitter', false, $imgSubmitter));
+        $form->addElement(new \XoopsFormSelectUser(\_AM_WGSLIDER_SUBMITTER, 'submitter', false, $imgSubmitter));
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormHidden('start', $this->start));

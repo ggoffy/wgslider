@@ -114,7 +114,7 @@ class Category extends \XoopsObject
         $form->addElement($selectCatKey);
         // Form Select Status catStatus
         $catStatus = $this->isNew() ? '1' : $this->getVar('status');
-        $catStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_CATEGORY_STATUS, 'status', $catStatus);
+        $catStatusSelect = new \XoopsFormRadio(\_AM_WGSLIDER_STATUS, 'status', $catStatus);
         $catStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGSLIDER_STATUS_OFFLINE);
         $catStatusSelect->addOption(Constants::STATUS_ONLINE, \_AM_WGSLIDER_STATUS_ONLINE);
         $form->addElement($catStatusSelect, true);
@@ -150,11 +150,11 @@ class Category extends \XoopsObject
         $form->addElement($catSlideshowSelect, true);
         // Form Text Date Select catDatecreated
         $catDatecreated = $this->isNew() ? \time() : $this->getVar('datecreated');
-        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGSLIDER_CATEGORY_DATECREATED, 'datecreated', '', $catDatecreated), true);
+        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGSLIDER_DATECREATED, 'datecreated', '', $catDatecreated), true);
         // Form Select User catSubmitter
         $uidCurrent = \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->uid() : 0;
         $catSubmitter = $this->isNew() ? $uidCurrent : $this->getVar('submitter');
-        $form->addElement(new \XoopsFormSelectUser(\_AM_WGSLIDER_CATEGORY_SUBMITTER, 'submitter', false, $catSubmitter), true);
+        $form->addElement(new \XoopsFormSelectUser(\_AM_WGSLIDER_SUBMITTER, 'submitter', false, $catSubmitter), true);
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormHidden('start', $this->start));

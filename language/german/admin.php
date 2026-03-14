@@ -63,7 +63,6 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_CATEGORY_DISPLAY', 'Art der Anzeige');
 \define('_AM_WGSLIDER_CATEGORY_KEY', 'Name der Smarty-Variable');
 \define('_AM_WGSLIDER_CATEGORY_KEY_DESCR', "Name ist nur erforderlich, wenn '" . _AM_WGSLIDER_DISPLAY_KEY . "' ausgewählt wurde.<br>Die Smarty-Variable muss in Ihrem Template eingefügt werden");
-\define('_AM_WGSLIDER_CATEGORY_STATUS', 'Status');
 \define('_AM_WGSLIDER_CATEGORY_MAXIMG', 'Maximale Anzahl Bilder');
 \define('_AM_WGSLIDER_CATEGORY_MAXIMG_DESCR', 'Definiert die maximale Anzahl von Bildern pro Kategorie. 0 bedeutet kein Limit');
 \define('_AM_WGSLIDER_CATEGORY_IMGWIDTH', 'Bildbreite');
@@ -71,8 +70,6 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_CATEGORY_IMGHEIGHT', 'Bildhöhe');
 \define('_AM_WGSLIDER_CATEGORY_IMGHEIGHT_DESCR', 'Definiert die Höhe der Bilder. Bilder müssen exakt diese Höhe haben, um angezeigt zu werden. 0 bedeutet keine Einschränkung.');
 \define('_AM_WGSLIDER_CATEGORY_SLIDESHOW', 'Diashow');
-\define('_AM_WGSLIDER_CATEGORY_DATECREATED', 'Erstellt am');
-\define('_AM_WGSLIDER_CATEGORY_SUBMITTER', 'Eingereicht von');
 \define('_AM_WGSLIDER_CATEGORY_SURE_DELETE', "Möchten Sie die Kategorie wirklich löschen: <b><span style='color : Red;'>%s </span></b><br>Es werden auch alle Bilder dieser Kategorie gelöscht!");
 \define('_AM_WGSLIDER_CATEGORY_DELETE_OK', 'Kategorie und alle Bilder erfolgreich gelöscht');
 \define('_AM_WGSLIDER_CATEGORY_DELETE_FAILED', 'Kategorie gelöscht, aber beim Löschen der Bilder ist ein Fehler aufgetreten!');
@@ -90,10 +87,6 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_IMAGE_HEIGHT', 'Höhe');
 \define('_AM_WGSLIDER_IMAGE_WEIGHT', 'Gewichtung');
 \define('_AM_WGSLIDER_IMAGE_CATEGORY', 'Kategorie');
-\define('_AM_WGSLIDER_IMAGE_STATUS', 'Status');
-\define('_AM_WGSLIDER_IMAGE_DATECREATED', 'Erstellt am');
-\define('_AM_WGSLIDER_IMAGE_SUBMITTER', 'Eingereicht von');
-
 // Slideshow misc
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_DEFAULT', 'Standard-Diashow ohne zusätzliche Anforderungen');
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_BT3', 'Bootstrap3 Carousel benötigt ein Theme basierend auf Bootstrap 3');
@@ -111,6 +104,8 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_TPL', 'Template-Datei');
 \define('_AM_WGSLIDER_SLIDESHOW_PARAMS', 'Parameter');
 // General
+\define('_AM_WGSLIDER_DATECREATED', 'Erstellt am');
+\define('_AM_WGSLIDER_SUBMITTER', 'Eingereicht von');
 \define('_AM_WGSLIDER_FORM_UPLOAD', 'Datei hochladen');
 \define('_AM_WGSLIDER_FORM_UPLOAD_NEW', 'Neue Datei hochladen: ');
 \define('_AM_WGSLIDER_FORM_UPLOAD_SIZE', 'Maximale Dateigröße: ');
@@ -122,6 +117,7 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_FORM_EDIT', 'Bearbeiten');
 \define('_AM_WGSLIDER_FORM_DELETE', 'Löschen');
 // Status
+\define('_AM_WGSLIDER_STATUS', 'Status');
 \define('_AM_WGSLIDER_STATUS_NONE', 'Kein Status');
 \define('_AM_WGSLIDER_STATUS_OFFLINE', 'Offline');
 \define('_AM_WGSLIDER_STATUS_OFFLINE_CLICK', 'Offline, klicken um online zu setzen!');

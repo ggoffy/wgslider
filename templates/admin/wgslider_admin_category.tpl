@@ -10,9 +10,9 @@
                 <th class="center"><{$smarty.const._AM_WGSLIDER_CATEGORY_DISPLAY}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_CATEGORY_KEY}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_CATEGORY_SLIDESHOW}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_CATEGORY_DATECREATED}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_CATEGORY_SUBMITTER}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_CATEGORY_STATUS}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_DATECREATED}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_SUBMITTER}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_STATUS}></th>
                 <th class="center width5"><{$smarty.const._AM_WGSLIDER_FORM_ACTION}></th>
             </tr>
         </thead>
