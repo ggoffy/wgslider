@@ -81,7 +81,7 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_IMAGE_ID', 'ID');
 \define('_AM_WGSLIDER_IMAGE_NAME', 'Name');
 \define('_AM_WGSLIDER_IMAGE_TOOLTIP', 'Tooltip');
-\define('_AM_WGSLIDER_IMAGE_REALNAME', 'Originaldateiname');
+\define('_AM_WGSLIDER_IMAGE_REALNAME', 'Echter Dateiname');
 \define('_AM_WGSLIDER_IMAGE_REALNAME_UPLOADS', 'Pfad in %s :');
 \define('_AM_WGSLIDER_IMAGE_PREVIEW', 'Vorschau');
 \define('_AM_WGSLIDER_IMAGE_WIDTH', 'Breite');
