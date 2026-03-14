@@ -60,7 +60,7 @@ require_once __DIR__ . '/common.php';
 // Elements of Category
 \define('_AM_WGSLIDER_CATEGORY_ID', 'Id');
 \define('_AM_WGSLIDER_CATEGORY_NAME', 'Name');
-\define('_AM_WGSLIDER_CATEGORY_DISPLAY', 'Display');
+\define('_AM_WGSLIDER_CATEGORY_DISPLAY', 'Display type');
 \define('_AM_WGSLIDER_CATEGORY_KEY', 'Name of smarty variable');
 \define('_AM_WGSLIDER_CATEGORY_KEY_DESCR', "Name is only mandatory if you select '" . _AM_WGSLIDER_DISPLAY_KEY . "'.<br>You have to put the smarty variable somewhere in your template");
 \define('_AM_WGSLIDER_CATEGORY_STATUS', 'Status');

@@ -60,7 +60,7 @@ require_once __DIR__ . '/common.php';
 // Elements of Category
 \define('_AM_WGSLIDER_CATEGORY_ID', 'ID');
 \define('_AM_WGSLIDER_CATEGORY_NAME', 'Name');
-\define('_AM_WGSLIDER_CATEGORY_DISPLAY', 'Anzeige');
+\define('_AM_WGSLIDER_CATEGORY_DISPLAY', 'Art der Anzeige');
 \define('_AM_WGSLIDER_CATEGORY_KEY', 'Name der Smarty-Variable');
 \define('_AM_WGSLIDER_CATEGORY_KEY_DESCR', "Name ist nur erforderlich, wenn '" . _AM_WGSLIDER_DISPLAY_KEY . "' ausgewählt wurde.<br>Die Smarty-Variable muss in Ihrem Template eingefügt werden");
 \define('_AM_WGSLIDER_CATEGORY_STATUS', 'Status');
