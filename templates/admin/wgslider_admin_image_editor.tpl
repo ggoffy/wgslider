@@ -26,41 +26,41 @@
             <div class="ie-toolbar">
                 <!-- Aspect Ratio -->
                 <div class="ie-group">
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="1.3333">4:3</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="0.6666">2:3</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="1.5">3:2</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="3">3:1</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="2">2:1</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="1">1:1</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="1.7777">16:9</button>
-                    <button class="ie-btn-crop" data-method="setAspectRatio" data-option="NaN">Free</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="1.3333" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 4:3">4:3</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="0.6666" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 2:3">2:3</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="1.5" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 3:2">3:2</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="3" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 3:1">3:1</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="2" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 2:1">2:1</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="1" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 1:1">1:1</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="1.7777" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> 16:9">16:9</button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="setAspectRatio" data-option="NaN" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO}> <{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ASPECTRATIO_FREE}>">Free</button>
                 </div>
 
                 <!-- Zoom -->
                 <div class="ie-group">
-                    <button class="ie-btn-crop" data-method="zoom" data-option="0.1"><span class="fa fa-search-plus"></span></button>
-                    <button class="ie-btn-crop" data-method="zoom" data-option="-0.1"><span class="fa fa-search-minus"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="zoom" data-option="0.1" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ZOOMIN}>"><span class="fa fa-search-plus"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="zoom" data-option="-0.1" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ZOOMOUT}>"><span class="fa fa-search-minus"></span></button>
                 </div>
 
                 <!-- Move -->
                 <div class="ie-group">
-                    <button class="ie-btn-crop" data-method="move" data-option="-10" data-second-option="0"><span class="fa fa-arrow-left"></span></button>
-                    <button class="ie-btn-crop" data-method="move" data-option="10" data-second-option="0"><span class="fa fa-arrow-right"></span></button>
-                    <button class="ie-btn-crop" data-method="move" data-option="0" data-second-option="-10"><span class="fa fa-arrow-up"></span></button>
-                    <button class="ie-btn-crop" data-method="move" data-option="0" data-second-option="10"><span class="fa fa-arrow-down"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="move" data-option="-10" data-second-option="0" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_MOVE_LEFT}>"><span class="fa fa-arrow-left"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="move" data-option="10" data-second-option="0" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_MOVE_RIGHT}>"><span class="fa fa-arrow-right"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="move" data-option="0" data-second-option="-10" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_MOVE_UP}>"><span class="fa fa-arrow-up"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="move" data-option="0" data-second-option="10" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_MOVE_DOWN}>"><span class="fa fa-arrow-down"></span></button>
                 </div>
 
                 <!-- Rotate / Flip -->
                 <div class="ie-group">
-                    <button class="ie-btn-crop" data-method="rotate" data-option="-45"><span class="fa fa-rotate-left"></span></button>
-                    <button class="ie-btn-crop" data-method="rotate" data-option="45"><span class="fa fa-rotate-right"></span></button>
-                    <button class="ie-btn-crop" data-method="scaleX" data-option="-1"><span class="fa fa-arrows-h"></span></button>
-                    <button class="ie-btn-crop" data-method="scaleY" data-option="-1"><span class="fa fa-arrows-v"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="rotate" data-option="-45" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ROTATE_LEFT}>"><span class="fa fa-rotate-left"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="rotate" data-option="45" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_ROTATE_RIGHT}>"><span class="fa fa-rotate-right"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="scaleX" data-option="-1" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_FLIP_HORIZONTAL}>"><span class="fa fa-arrows-h"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="scaleY" data-option="-1" title="<{$smarty.const._AM_WGSLIDER_IMAGE_EDITOR_CROP_FLIP_VERTICAL}>"><span class="fa fa-arrows-v"></span></button>
                 </div>
 
                 <!-- Reset -->
                 <div class="ie-group">
-                    <button class="ie-btn-crop" data-method="reset"><span class="fa fa-refresh"></span></button>
+                    <button class="ie-btn-crop ie-btn-crop-tooltip" data-method="reset" title="<{$smarty.const._RESET}>"><span class="fa fa-refresh"></span></button>
                 </div>
 
                 <!-- Actions -->
