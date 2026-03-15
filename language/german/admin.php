@@ -80,7 +80,7 @@ require_once __DIR__ . '/common.php';
 // Elements of Image
 \define('_AM_WGSLIDER_IMAGE_ID', 'ID');
 \define('_AM_WGSLIDER_IMAGE_NAME', 'Name');
-\define('_AM_WGSLIDER_IMAGE_TOOLTIP', 'Tooltip');
+\define('_AM_WGSLIDER_IMAGE_DESCRIPTION', 'Beschreibung');
 \define('_AM_WGSLIDER_IMAGE_REALNAME', 'Echter Dateiname');
 \define('_AM_WGSLIDER_IMAGE_REALNAME_UPLOADS', 'Pfad in %s :');
 \define('_AM_WGSLIDER_IMAGE_PREVIEW', 'Vorschau');
@@ -92,6 +92,7 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_DEFAULT', 'Standard-Diashow ohne zusätzliche Anforderungen');
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_BT3', 'Bootstrap3 Carousel benötigt ein Theme basierend auf Bootstrap 3');
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_BT5', 'Bootstrap5 Carousel benötigt ein Theme basierend auf Bootstrap 5');
+\define('_AM_WGSLIDER_SLIDESHOW_DESCR_SWIPER', 'Swiper Slideshow ohne zusätzliche Anforderungen');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET_SURE', 'Möchten Sie wirklich alle Diashows zurücksetzen? Alle aktuellen Parameter-Einstellungen gehen verloren.');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET_OK', 'Alle Diashows wurden erfolgreich zurückgesetzt');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET_ERROR', 'Beim Zurücksetzen der Diashow ist ein Fehler aufgetreten');
@@ -104,6 +105,25 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR', 'Beschreibung');
 \define('_AM_WGSLIDER_SLIDESHOW_TPL', 'Template-Datei');
 \define('_AM_WGSLIDER_SLIDESHOW_PARAMS', 'Parameter');
+\define('_AM_WGSLIDER_SLIDESHOW_CREDITS', 'Credits');
+// Slideshow parameters
+\define('_AM_WGSLIDER_SLIDESHOW_DELAY', 'Verzögerung');
+\define('_AM_WGSLIDER_SLIDESHOW_PAUSE', 'Pause bei Mouse-over');
+\define('_AM_WGSLIDER_SLIDESHOW_WRAP', 'Slideshow soll permanent laufen');
+\define('_AM_WGSLIDER_SLIDESHOW_KEYBOARD', 'Unterstützung Tastatur');
+\define('_AM_WGSLIDER_SLIDESHOW_TOUCH', 'Unterstützung Touch');
+\define('_AM_WGSLIDER_SLIDESHOW_SHOW_INDICATOR', 'Indikator Unterstützung');
+\define('_AM_WGSLIDER_SLIDESHOW_SHOW_PREV_NEXT', 'Vorheriges/nächstes anzeigen previous/next ');
+\define('_AM_WGSLIDER_SLIDESHOW_SHOW_CAPTION', 'Titel Unterstützung');
+\define('_AM_WGSLIDER_SLIDESHOW_SHOW_DESCR', 'Beschreibung Unterstützung');
+\define('_AM_WGSLIDER_SLIDESHOW_SHOW_THUMBS', 'Vorschaubilder anzeigen');
+\define('_AM_WGSLIDER_SLIDESHOW_FULLSIZE', 'Volle Größe');
+\define('_AM_WGSLIDER_SLIDESHOW_PERVIEW', 'Bilder pro Ansicht');
+\define('_AM_WGSLIDER_SLIDESHOW_AUTOPLAY', 'Auto play');
+\define('_AM_WGSLIDER_SLIDESHOW_EFFECT', 'Effekt');
+\define('_AM_WGSLIDER_SLIDESHOW_BG_CAPTION', 'Hintergrund Titel');
+\define('_AM_WGSLIDER_SLIDESHOW_AUTOHEIGHT', 'Bildhöhe automatisch anpassen');
+
 // General
 \define('_AM_WGSLIDER_DATECREATED', 'Erstellt am');
 \define('_AM_WGSLIDER_SUBMITTER', 'Eingereicht von');

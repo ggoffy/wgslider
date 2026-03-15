@@ -123,6 +123,36 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
+     * Load language for params
+     * @return array
+     */
+    public function loadParamLanguage(): array
+    {
+        $paramLang = [];
+        $paramLang['timeout'] = \_AM_WGSLIDER_SLIDESHOW_DELAY;
+        $paramLang['interval'] = \_AM_WGSLIDER_SLIDESHOW_DELAY;
+        $paramLang['pause'] = \_AM_WGSLIDER_SLIDESHOW_PAUSE;
+        $paramLang['wrap'] = \_AM_WGSLIDER_SLIDESHOW_WRAP;
+        $paramLang['keyboard'] = \_AM_WGSLIDER_SLIDESHOW_KEYBOARD;
+        $paramLang['touch'] = \_AM_WGSLIDER_SLIDESHOW_TOUCH;
+        $paramLang['show_indicator'] = \_AM_WGSLIDER_SLIDESHOW_SHOW_INDICATOR;
+        $paramLang['show_prev_next'] = \_AM_WGSLIDER_SLIDESHOW_SHOW_PREV_NEXT;
+        $paramLang['show_caption'] = \_AM_WGSLIDER_SLIDESHOW_SHOW_CAPTION;
+        $paramLang['show_descr'] = \_AM_WGSLIDER_SLIDESHOW_SHOW_DESCR;
+        $paramLang['show_thumbs'] = \_AM_WGSLIDER_SLIDESHOW_SHOW_THUMBS;
+        $paramLang['fullsize'] = \_AM_WGSLIDER_SLIDESHOW_FULLSIZE;
+        $paramLang['delay'] = \_AM_WGSLIDER_SLIDESHOW_DELAY;
+        $paramLang['effect'] = \_AM_WGSLIDER_SLIDESHOW_EFFECT;
+        $paramLang['perview'] = \_AM_WGSLIDER_SLIDESHOW_PERVIEW;
+        $paramLang['autoplay'] = \_AM_WGSLIDER_SLIDESHOW_AUTOPLAY;
+        $paramLang['pauseOnMouse'] = \_AM_WGSLIDER_SLIDESHOW_PAUSE;
+        $paramLang['bg_caption'] = \_AM_WGSLIDER_SLIDESHOW_BG_CAPTION;
+        $paramLang['autoheight'] = \_AM_WGSLIDER_SLIDESHOW_AUTOHEIGHT;
+
+        return $paramLang;
+    }
+
+    /**
      * Load all default slideshows
      * @return bool
      */
@@ -134,6 +164,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
         $defaultSliders[] = $this->getSlideshowDefault();
         $defaultSliders[] = $this->getSlideshowBt3();
         $defaultSliders[] = $this->getSlideshowBt5();
+        $defaultSliders[] = $this->getSlideshowSwiper();
 
         foreach ($defaultSliders as $slider) {
             $slideshowObj = $slideshowHandler->get($slider['id']);
@@ -147,12 +178,14 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             $slideshowObj->setVar('descr', $slider['descr']);
             $slideshowObj->setVar('tpl', $slider['tpl']);
             $slideshowObj->setVar('status', $slider['status']);
+            $slideshowObj->setVar('credits', $slider['credits']);
             $slideshowObj->setVar('params', $slider['params']);
             $slideshowHandler->insert($slideshowObj);
         }
 
         return true;
     }
+
     /**
      * Render array for slideshow, used as block or smarty
      * @param int $catId
@@ -173,10 +206,15 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             $slideshowObj = $this->get($categoryObj->getVar('slideshow'));
             if (is_object($slideshowObj)) {
                 $slsTpl = $slideshowObj->getVar('tpl');
+                $wgs_params = [];
                 $params = json_decode($slideshowObj->getVar('params', 'n'), true);
                 foreach ($params as $key => $value) {
-                    $GLOBALS['xoopsTpl']->assign('wgslider_param_' . $key, $value);
+                    $value_cleaned = $value;
+                    if ('false' === $value) {$value_cleaned = false;}
+                    if ('true' === $value) {$value_cleaned = true;}
+                    $wgs_params[$key] = $value_cleaned;
                 }
+                $GLOBALS['xoopsTpl']->assign('wgs_params', $wgs_params);
             } else {
                 return [];
             }
@@ -195,7 +233,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             foreach (\array_keys($imageAll) as $i) {
                 $block[$i]['id'] = $imageAll[$i]->getVar('id');
                 $block[$i]['name'] = \htmlspecialchars($imageAll[$i]->getVar('name'), ENT_QUOTES | ENT_HTML5);
-                $block[$i]['tooltip'] = \htmlspecialchars($imageAll[$i]->getVar('tooltip'), ENT_QUOTES | ENT_HTML5);
+                $block[$i]['description'] = \htmlspecialchars($imageAll[$i]->getVar('description'), ENT_QUOTES | ENT_HTML5);
                 $block[$i]['realname'] = $imageAll[$i]->getVar('realname');
             }
         }
@@ -212,12 +250,13 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
     private function getSlideshowDefault(): array
     {
         return [
-            'id'     => Constants::SLIDESHOW_DEFAULT,
-            'name'   => 'Default',
-            'descr'  => _AM_WGSLIDER_SLIDESHOW_DESCR_DEFAULT,
-            'tpl'    => 'wgslider_slideshow_default.tpl',
-            'status' =>  Constants::STATUS_ONLINE,
-            'params' => json_encode([
+            'id'        => Constants::SLIDESHOW_DEFAULT,
+            'name'      => 'Default',
+            'descr'     => _AM_WGSLIDER_SLIDESHOW_DESCR_DEFAULT,
+            'tpl'       => 'wgslider_slideshow_default.tpl',
+            'status'    =>  Constants::STATUS_ONLINE,
+            'credits'   =>  '',
+            'params'    => json_encode([
                 'timeout'   => 4000
             ])
         ];
@@ -231,19 +270,20 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
     private function getSlideshowBt3(): array
     {
         return [
-            'id'     => Constants::SLIDESHOW_BT3,
-            'name'   => 'Bootstrap3 Carousel',
-            'descr'  => _AM_WGSLIDER_SLIDESHOW_DESCR_BT3,
-            'tpl'    => 'wgslider_slideshow_bt3.tpl',
-            'status' => Constants::STATUS_ONLINE,
-            'params' => json_encode([
-                'bt3_data_interval'   => 4000,
-                'bt3_data_pause'      => 'hover',
-                'bt3_data_wrap'       => 'true',
-                'bt3_data_keyboard'   => 'true',
-                'bt3_show_indicators' => 'true',
-                'bt3_show_prev_next'  => 'true',
-                'bt3_fullsize'        => 'true',
+            'id'        => Constants::SLIDESHOW_BT3,
+            'name'      => 'Bootstrap3 Carousel',
+            'descr'     => _AM_WGSLIDER_SLIDESHOW_DESCR_BT3,
+            'tpl'       => 'wgslider_slideshow_bt3.tpl',
+            'status'    => Constants::STATUS_ONLINE,
+            'credits'   =>  'https://getbootstrap.com',
+            'params'    => json_encode([
+                'interval'   => 4000,
+                'pause'      => 'hover',
+                'wrap'       => 'true',
+                'keyboard'   => 'true',
+                'show_indicator'  => 'true',
+                'show_prev_next'  => 'true',
+                'fullsize'        => 'true',
             ])
         ];
     }
@@ -256,21 +296,54 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
     private function getSlideshowBt5(): array
     {
         return [
-            'id'     => Constants::SLIDESHOW_BT5,
-            'name'   => 'Bootstrap5 Carousel',
-            'descr'  => _AM_WGSLIDER_SLIDESHOW_DESCR_BT5,
-            'tpl'    => 'wgslider_slideshow_bt5.tpl',
-            'status' => Constants::STATUS_ONLINE,
-            'params' => json_encode([
-                'bt5_data_interval'   => 4000,
-                'bt5_data_pause'      => 'hover',
-                'bt5_data_wrap'       => 'true',
-                'bt5_data_keyboard'   => 'true',
-                'bt5_data_touch'      => 'true',
-                'bt5_show_indicators' => 'true',
-                'bt5_show_prev_next'  => 'true',
-                'bt5_show_captions'   => 'true',
-                'bt5_fullsize'        => 'true',
+            'id'        => Constants::SLIDESHOW_BT5,
+            'name'      => 'Bootstrap5 Carousel',
+            'descr'     => _AM_WGSLIDER_SLIDESHOW_DESCR_BT5,
+            'tpl'       => 'wgslider_slideshow_bt5.tpl',
+            'status'    => Constants::STATUS_ONLINE,
+            'credits'   =>  'https://getbootstrap.com',
+            'params'    => json_encode([
+                'interval'        => 4000,
+                'pause'           => 'hover',
+                'wrap'            => 'true',
+                'keyboard'        => 'true',
+                'touch'           => 'true',
+                'show_indicator'  => 'true',
+                'show_prev_next'  => 'true',
+                'show_caption'    => 'true',
+                'show_descr'      => 'true',
+                'fullsize'        => 'true',
+            ])
+        ];
+    }
+
+    /**
+     * function getSlideshowSwiper to get settings for swiper
+     *
+     * @return array
+     */
+    private function getSlideshowSwiper(): array
+    {
+        return [
+            'id'        => Constants::SLIDESHOW_SWIPER,
+            'name'      => 'Swiper',
+            'descr'     => _AM_WGSLIDER_SLIDESHOW_DESCR_SWIPER,
+            'tpl'       => 'wgslider_slideshow_swiper.tpl',
+            'status'    =>  Constants::STATUS_ONLINE,
+            'credits'   =>  'https://swiperjs.com',
+            'params'    => json_encode([
+                'delay'           => 4000,
+                'effect'          => 'slide',
+                'perview'         => 1,
+                'autoplay'        => 1,
+                'show_indicator'  => 'true',
+                'show_prev_next'  => 'true',
+                'show_caption'    => 'true',
+                'show_descr'      => 'true',
+                'show_thumbs'     => 'false',
+                'pauseOnMouse'    => 'true',
+                'bg_caption'      => 'hard',
+                'autoheight'      => 'true',
             ])
         ];
     }

@@ -51,6 +51,7 @@ function b_wgslider_slideshow_show($options): array
     }
 
     $GLOBALS['xoopsTpl']->assign('wgslider_upload_image_url', \WGSLIDER_UPLOAD_IMAGE_URL);
+    $GLOBALS['xoopsTpl']->assign('wgslider_url', \WGSLIDER_URL);
     $GLOBALS['xoopsTpl']->assign('wgslider_identifier', $slsIdentifier);
     $GLOBALS['xoopsTpl']->assign('wgslider_slideshow_tpl', $slsElements['slsTpl']);
 

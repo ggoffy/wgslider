@@ -33,7 +33,7 @@ CREATE TABLE `wgslider_category` (
 CREATE TABLE `wgslider_image` (
   `id`          INT(8)          UNSIGNED NOT NULL AUTO_INCREMENT,
   `name`        VARCHAR(255)    NOT NULL DEFAULT '',
-  `tooltip`     VARCHAR(255)    NOT NULL DEFAULT '',
+  `description` VARCHAR(255)    NOT NULL DEFAULT '',
   `realname`    VARCHAR(255)    NOT NULL DEFAULT '',
   `width`       INT(10)         NOT NULL DEFAULT '0',
   `height`      INT(10)         NOT NULL DEFAULT '0',
@@ -51,11 +51,12 @@ CREATE TABLE `wgslider_image` (
 #
 
 CREATE TABLE `wgslider_slideshow` (
-  `id`     INT(8)          UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name`   VARCHAR(255)    NOT NULL DEFAULT '',
-  `descr`  VARCHAR(255)    NOT NULL DEFAULT '',
-  `tpl`    VARCHAR(255)    NOT NULL DEFAULT '',
-  `params` VARCHAR(2000)   NOT NULL DEFAULT '',
-  `status` INT(1)          NOT NULL DEFAULT '0',
+  `id`      INT(8)          UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name`    VARCHAR(255)    NOT NULL DEFAULT '',
+  `descr`   VARCHAR(255)    NOT NULL DEFAULT '',
+  `tpl`     VARCHAR(255)    NOT NULL DEFAULT '',
+  `credits` VARCHAR(255)    NOT NULL DEFAULT '',
+  `params`  VARCHAR(2000)   NOT NULL DEFAULT '',
+  `status`  INT(1)          NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;

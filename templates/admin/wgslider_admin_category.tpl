@@ -25,10 +25,12 @@
                 <td class=''><{$category.display_text|default:false}></td>
                 <td class=''><{$category.key|default:false}></td>
                 <td class=''>
-                    <{if $category.slideshow_offline|default:false}>
-                        <img src="<{$modPathIcon32}>warning.png" alt="<{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>" title="<{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>">
-                    <{/if}>
-                    <{$category.slideshow_text|default:false}>
+                    <div class="wgs-check-info">
+                        <{if $category.slideshow_offline|default:false}>
+                            <img src="<{$modPathIcon32}>warning.png" alt="<{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>" title="<{$smarty.const._AM_WGSLIDER_WARNING_SLIDESHOW_OFFLINE}>">
+                        <{/if}>
+                        <{$category.slideshow_text|default:false}>
+                    </div>
                 </td>
                 <td class=''><{$category.datecreated_text|default:false}></td>
                 <td class=''><{$category.submitter_text|default:false}></td>

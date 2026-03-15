@@ -145,7 +145,7 @@ switch ($op) {
         // Set Vars
         $uploaderErrors = '';
         $imageObj->setVar('name', Request::getString('name'));
-        $imageObj->setVar('tooltip', Request::getString('tooltip'));
+        $imageObj->setVar('description', Request::getString('description'));
         // Set Var img_realname
         if (0 === $imgId) {
             require_once \XOOPS_ROOT_PATH . '/class/uploader.php';

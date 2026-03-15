@@ -110,26 +110,42 @@ switch ($op) {
         }
         if (Constants::SLIDESHOW_BT3 === $slsId) {
             $params = [
-                'bt3_data_interval' => Request::getInt('bt3_data_interval'),
-                'bt3_data_pause' => Request::getString('bt3_data_pause'),
-                'bt3_data_wrap' => Request::getString('bt3_data_wrap'),
-                'bt3_data_keyboard' => Request::getString('bt3_data_keyboard'),
-                'bt3_show_indicators' => Request::getString('bt3_show_indicators'),
-                'bt3_show_prev_next' => Request::getString('bt3_show_prev_next'),
-                'bt3_fullsize' => Request::getString('bt3_fullsize'),
+                'interval'        => Request::getInt('interval'),
+                'pause'           => Request::getString('pause'),
+                'wrap'            => Request::getString('wrap'),
+                'keyboard'        => Request::getString('keyboard'),
+                'show_indicator'  => Request::getString('show_indicator'),
+                'show_prev_next'  => Request::getString('show_prev_next'),
+                'fullsize'        => Request::getString('fullsize'),
             ];
         }
         if (Constants::SLIDESHOW_BT5 === $slsId) {
             $params = [
-                'bt5_data_interval' => Request::getInt('bt5_data_interval'),
-                'bt5_data_pause' => Request::getString('bt5_data_pause'),
-                'bt5_data_wrap' => Request::getString('bt5_data_wrap'),
-                'bt5_data_keyboard' => Request::getString('bt5_data_keyboard'),
-                'bt5_data_touch' => Request::getString('bt5_data_touch'),
-                'bt5_show_indicators' => Request::getString('bt5_show_indicators'),
-                'bt5_show_prev_next' => Request::getString('bt5_show_prev_next'),
-                'bt5_show_captions' => Request::getString('bt5_show_captions'),
-                'bt5_fullsize' => Request::getString('bt5_fullsize'),
+                'interval'        => Request::getInt('interval'),
+                'pause'           => Request::getString('pause'),
+                'wrap'            => Request::getString('wrap'),
+                'keyboard'        => Request::getString('keyboard'),
+                'touch'           => Request::getString('touch'),
+                'show_indicator'  => Request::getString('show_indicator'),
+                'show_prev_next'  => Request::getString('show_prev_next'),
+                'show_caption'    => Request::getString('show_caption'),
+                'fullsize'        => Request::getString('fullsize'),
+            ];
+        }
+        if (Constants::SLIDESHOW_SWIPER === $slsId) {
+            $params = [
+                'delay'           => Request::getInt('delay'),
+                'effect'          => Request::getString('effect'),
+                'perview'         => Request::getString('perview'),
+                'autoplay'        => Request::getString('autoplay'),
+                'show_indicator'  => Request::getString('show_indicator'),
+                'show_prev_next'  => Request::getString('show_prev_next'),
+                'show_caption'    => Request::getString('show_caption'),
+                'show_descr'      => Request::getString('show_descr'),
+                'show_thumbs'     => Request::getString('show_thumbs'),
+                'pauseOnMouse'    => Request::getString('pauseOnMouse'),
+                'bg_caption'      => Request::getString('bg_caption'),
+                'autoheight'      => Request::getString('autoheight'),
             ];
         }
         $paramsJSON = json_encode($params);

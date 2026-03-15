@@ -54,6 +54,7 @@ class Slideshow extends \XoopsObject
         $this->initVar('tpl', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('params', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('status', \XOBJ_DTYPE_INT);
+        $this->initVar('credits', \XOBJ_DTYPE_TXTBOX);
     }
 
     /**
@@ -95,47 +96,69 @@ class Slideshow extends \XoopsObject
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         // Form Text slsName
-        $slsName = $this->getVar('name');
-        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_SLIDESHOW_NAME, $slsName));
+        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_SLIDESHOW_NAME, $this->getVar('name')));
         // Form Text slsDescr
-        $slsDescr = $this->getVar('descr');
-        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_SLIDESHOW_DESCR, $slsDescr));
+        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_SLIDESHOW_DESCR, $this->getVar('descr')));
+        // Form Text slsCredits
+        $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_SLIDESHOW_CREDITS, $this->getVar('credits')));
         // Form Editor TextArea slsParams
         $param_arr =  json_decode($this->getVar('params', 'n'), true);
         if (!is_array($param_arr)) {
             $param_arr = [];
         }
+        $helper = \XoopsModules\Wgslider\Helper::getInstance();
+        $slideshowHandler = $helper->getHandler('Slideshow');
+        $paramLang = $slideshowHandler->loadParamLanguage();
         $paramTray = new \XoopsFormElementTray(\_AM_WGSLIDER_SLIDESHOW_PARAMS, '<br>');
         foreach ($param_arr as $key => $value) {
             switch ($key) {
                 // params with text or integer
                 case 'timeout':
                 default:
-                    $paramTray->addElement(new \XoopsFormText($key, $key, 10, 255, $value), true);
+                    $paramTray->addElement(new \XoopsFormText($paramLang[$key], $key, 10, 255, $value), true);
                     break;
                 // params with true/false
-                case 'bt3_data_wrap':
-                case 'bt3_data_keyboard':
-                case 'bt3_show_indicators':
-                case 'bt3_show_prev_next':
-                case 'bt3_fullsize':
-                case 'bt5_data_wrap':
-                case 'bt5_data_keyboard':
-                case 'bt5_data_touch':
-                case 'bt5_show_indicators':
-                case 'bt5_show_prev_next':
-                case 'bt5_show_captions':
-                case 'bt5_fullsize':
-                    $truefalseSelect[$key] = new \XoopsFormRadio($key, $key, $value);
+                case 'wrap':
+                case 'keyboard':
+                case 'show_indicator':
+                case 'show_prev_next':
+                case 'fullsize':
+                case 'touch':
+                case 'show_caption':
+                case 'show_descr':
+                case 'show_thumbs':
+                case 'pauseOnMouse':
+                case 'autoheight':
+                    $truefalseSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
                     $truefalseSelect[$key]->addOption('true', 'true');
                     $truefalseSelect[$key]->addOption('false', 'false');
                     $paramTray->addElement($truefalseSelect[$key]);
                     break;
-                // misc params
-                case 'bt3_data_pause':
-                case 'bt5_data_pause':
-                    $truefalseSelect[$key] = new \XoopsFormRadio($key, $key, $value);
-                    $truefalseSelect[$key]->addOption('"hover"', 'hover');
+                //swiper
+                case 'effect':
+                    $effectSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $effectSelect[$key]->addOption('slide', 'slide');
+                    $effectSelect[$key]->addOption('fade', 'fade');
+                    $effectSelect[$key]->addOption('coverflow', 'coverflow');
+                    $paramTray->addElement($effectSelect[$key]);
+                    break;
+                case 'perview':
+                    $effectSelect[$key] = new \XoopsFormSelect($paramLang[$key] . ':', $key, $value);
+                    for ($i = 1 ; $i <= 5 ; $i++) {
+                        $effectSelect[$key]->addOption($i, $i);
+                    }
+                    $paramTray->addElement($effectSelect[$key]);
+                    break;
+                case 'bg_caption':
+                    $bgcaptionSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $bgcaptionSelect[$key]->addOption('smooth', 'smooth');
+                    $bgcaptionSelect[$key]->addOption('hard', 'hard');
+                    $paramTray->addElement($bgcaptionSelect[$key]);
+                    break;
+                    // misc params
+                case 'pause':
+                    $truefalseSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $truefalseSelect[$key]->addOption('hover', 'hover');
                     $truefalseSelect[$key]->addOption('false', 'false');
                     $paramTray->addElement($truefalseSelect[$key]);
                     break;
@@ -211,8 +234,17 @@ class Slideshow extends \XoopsObject
      */
     public function getValuesSlideshow($keys = null, $format = null, $maxDepth = null): array
     {
+        $helper = \XoopsModules\Wgslider\Helper::getInstance();
+        $slideshowHandler = $helper->getHandler('Slideshow');
+        $paramLang = $slideshowHandler->loadParamLanguage();
+
         $ret = $this->getValues($keys, $format, $maxDepth);
-        $ret['params_arr'] = json_decode($this->getVar('params', 'n'), true);
+        $paramsArray = [];
+        $params =  json_decode($this->getVar('params', 'n'), true);
+        foreach ($params as $key => $value) {
+            $paramsArray[$key] = ['descr' => $paramLang[$key], 'value' => $value];
+        }
+        $ret['params_arr'] = $paramsArray;
 
         return $ret;
     }

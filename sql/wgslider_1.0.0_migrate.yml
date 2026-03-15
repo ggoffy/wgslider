@@ -94,6 +94,9 @@ wgslider_slideshow:
             name: tpl
             attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
         -
+            name: credits
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
             name: params
             attributes: ' VARCHAR(2000)   NOT NULL DEFAULT '''''''' '
         -

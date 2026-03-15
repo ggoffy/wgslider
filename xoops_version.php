@@ -91,6 +91,7 @@ $modversion['templates'] = [
 $modversion['templates'][] = ['file' => 'wgslider_slideshow_default.tpl', 'description' => ''];
 $modversion['templates'][] = ['file' => 'wgslider_slideshow_bt3.tpl', 'description' => ''];
 $modversion['templates'][] = ['file' => 'wgslider_slideshow_bt5.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'wgslider_slideshow_swiper.tpl', 'description' => ''];
 
 // ------------------- Mysql ------------------- //
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';

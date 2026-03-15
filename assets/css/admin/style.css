@@ -76,3 +76,12 @@
     max-width: 100%;
     height: auto;
 }
+
+.wgs-check-info {
+    display: flex;
+    align-items: center
+}
+
+.wgs-check-info img {
+    margin-right: 5px;
+}

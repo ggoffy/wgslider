@@ -3,6 +3,7 @@
     name: Default
     descr: 'Default slideshow without any additional requirements'
     tpl: wgslider_slideshow_default.tpl
+    credits: ''
     params: '{"timeout":4000}'
     status: '2'
 -
@@ -10,12 +11,22 @@
     name: 'Bootstrap3 Carousel'
     descr: 'Bootstrap3 Carousel requires a theme based on Bootstrap 3'
     tpl: wgslider_slideshow_bt3.tpl
-    params: '{"bt3_data_interval":4000,"bt3_data_pause":"","bt3_data_wrap":"true","bt3_data_keyboard":"true","bt3_show_indicators":"true","bt3_show_prev_next":"true","bt3_fullsize":"true"}'
+    credits: 'https://getbootstrap.com'
+    params: '{"interval":4000,"pause":"hover","wrap":"true","keyboard":"true","show_indicator":"true","show_prev_next":"true","fullsize":"true"}'
     status: '2'
 -
     id: '3'
     name: 'Bootstrap5 Carousel'
     descr: 'Bootstrap5 Carousel requires a theme based on Bootstrap 5'
     tpl: wgslider_slideshow_bt5.tpl
-    params: '{"bt5_data_interval":4000,"bt5_data_pause":"","bt5_data_wrap":"true","bt5_data_keyboard":"true","bt5_data_touch":"true","bt5_show_indicators":"true","bt5_show_prev_next":"true","bt5_show_captions":"true","bt5_fullsize":"true"}'
+    credits: 'https://getbootstrap.com'
+    params: '{"interval":4000,"pause":"hover","wrap":"true","keyboard":"true","touch":"true","show_indicator":"true","show_prev_next":"true","show_caption":"true","show_descr":"true","fullsize":"true"}'
+    status: '2'
+-
+    id: '4'
+    name: Swiper
+    descr: 'Swiper Slideshow without any additional requirements'
+    tpl: wgslider_slideshow_swiper.tpl
+    credits: 'https://swiperjs.com'
+    params: '{"delay":4000,"effect":"slide","perview":1,"autoplay":1,"show_indicator":"true","show_prev_next":"true","show_caption":"true","show_descr":"true","pauseOnMouse":"true","bg_caption":"hard","autoheight":"true"}'
     status: '2'

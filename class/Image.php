@@ -50,7 +50,7 @@ class Image extends \XoopsObject
     {
         $this->initVar('id', \XOBJ_DTYPE_INT);
         $this->initVar('name', \XOBJ_DTYPE_TXTBOX);
-        $this->initVar('tooltip', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('description', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('realname', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('width', \XOBJ_DTYPE_INT);
         $this->initVar('height', \XOBJ_DTYPE_INT);
@@ -102,9 +102,9 @@ class Image extends \XoopsObject
         $form->setExtra('enctype="multipart/form-data"');
         // Form Text imgName
         $form->addElement(new \XoopsFormText(\_AM_WGSLIDER_IMAGE_NAME, 'name', 50, 255, $this->getVar('name')), true);
-        // Form Text imgTooltip
-        $imgTooltip = $this->getVar('tooltip');
-        $form->addElement(new \XoopsFormText(\_AM_WGSLIDER_IMAGE_TOOLTIP, 'tooltip', 50, 255, $imgTooltip));
+        // Form Text imgDescription
+        $imgDescription = $this->getVar('description');
+        $form->addElement(new \XoopsFormText(\_AM_WGSLIDER_IMAGE_DESCRIPTION, 'description', 50, 255, $imgDescription));
         // Form Image imgRealname
         $imgRealname = $this->getVar('realname');
         if ($this->isNew()) {
@@ -119,9 +119,9 @@ class Image extends \XoopsObject
         } else {
             $form->addElement(new \XoopsFormLabel(\_AM_WGSLIDER_IMAGE_REALNAME, $imgRealname));
             $safeRealname = \rawurlencode((string)$imgRealname);
-            $safeTooltip  = \htmlspecialchars((string)$imgTooltip, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8');
+            $safeDescription  = \htmlspecialchars((string)$imgDescription, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8');
             $imgPreview = '<img src="' . WGSLIDER_UPLOAD_IMAGE_URL . '/' . $safeRealname . '"';
-            $imgPreview .= ' title="' . $safeTooltip . '"';
+            $imgPreview .= ' title="' . $safeDescription . '"';
             $imgPreview .= '>';
             $form->addElement(new \XoopsFormLabel('', $imgPreview));
         }

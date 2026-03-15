@@ -1,6 +1,6 @@
 <style>
     .img-fluid {
-        <{if $wgslider_param_bt3_fullsize == 'true'}>
+        <{if $wgs_params.fullsize}>
         width: 100%;
         <{else}>
         max-width: 100%;
@@ -11,7 +11,7 @@
 
 <div id="myCarousel<{$wgslider_identifier}>" class="carousel slide slideshow" data-ride="carousel">
     <!-- Indicators -->
-    <{if $wgslider_param_bt3_show_indicators == 'true'}>
+    <{if $wgs_params.show_indicator}>
     <ol class="carousel-indicators">
         <{foreach $block as $slider_images name=loop}>
         <li class="<{if $smarty.foreach.loop.index == 0}>active<{/if}>" data-slide-to="<{$smarty.foreach.loop.index}>" data-target="#myCarousel<{$wgslider_identifier}>"></li>
@@ -25,7 +25,7 @@
         </li>
         <{/foreach}>
     </div>
-    <{if $wgslider_param_bt3_show_prev_next == 'true'}>
+    <{if $wgs_params.show_prev_next}>
     <a class="left carousel-control" href="#myCarousel<{$wgslider_identifier}>" data-slide="prev"><span class="icon-prev"></span></a>
     <a data-slide="next" href="#myCarousel<{$wgslider_identifier}>" class="right carousel-control"><span class="icon-next"></span></a>
     <{/if}>
@@ -33,10 +33,10 @@
 
 <script>
     $('#myCarousel<{$wgslider_identifier}>').carousel({
-        interval: <{$wgslider_param_bt3_data_interval|default:5000}>,
-        pause: "<{$wgslider_param_bt3_data_pause|default:'hover'}>",
-        wrap: <{$wgslider_param_bt3_data_wrap|default:true}>,
-        keyboard: <{$wgslider_param_bt3_data_keyboard|default:true}>
+        interval: <{$wgs_params.interval|default:5000}>,
+        pause: "<{$wgs_params.pause|default:'hover'}>",
+        wrap: <{$wgs_params.wrap|default:true}>,
+        keyboard: <{$wgs_params.keyboard|default:true}>
     });
 </script>
 

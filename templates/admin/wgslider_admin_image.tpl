@@ -8,7 +8,7 @@
                 <th class="center">&nbsp;</th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_ID}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_NAME}></th>
-                <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_TOOLTIP}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_DESCRIPTION}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_REALNAME}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_PREVIEW}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_IMAGE_WIDTH}></th>
@@ -27,16 +27,17 @@
                 <td class=""><img src="<{$modPathIcon16}>/up_down.png" alt="drag&drop" class="icon-sortable"/></td>
                 <td class=''><{$image.id|default:false}></td>
                 <td class=''><{$image.name|default:''}></td>
-                <td class=''><{$image.tooltip|default:''}></td>
+                <td class=''><{$image.description|default:''}></td>
                 <td class=''><{$image.realname|default:''}></td>
                 <td class=''><img class='wgs-image-list' src="<{$wgslider_upload_url|default:false}>/images/<{$image.realname|default:false}><{$currentTime|default:''}>" alt="image" style="max-width:100px" ></td>
                 <td class='center'><{$image.width_text|default:''}></td>
                 <td class='center'><{$image.height_text|default:''}></td>
                 <td class=''>
-                    <{if $image.category_offline|default:false}>
-                        <img src="<{$modPathIcon16}>warning.png" alt="<{$smarty.const._AM_WGSLIDER_WARNING_CATEGORY_OFFLINE}>" title="<{$smarty.const._AM_WGSLIDER_WARNING_CATEGORY_OFFLINE}>">
-                    <{/if}>
-                    <{$image.category_name|default:''}>
+                    <div class="wgs-check-info">
+                        <{if $image.category_offline|default:false}>
+                            <img src="<{$modPathIcon16}>warning.png" alt="<{$smarty.const._AM_WGSLIDER_WARNING_CATEGORY_OFFLINE}>" title="<{$smarty.const._AM_WGSLIDER_WARNING_CATEGORY_OFFLINE}>">
+                        <{/if}>
+                    <{$image.category_name|default:''}></div>
                 </td>
                 <td class=''><{$image.datecreated_text|default:''}></td>
                 <td class=''><{$image.submitter_text|default:''}></td>

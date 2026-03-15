@@ -8,6 +8,7 @@
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_ID}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_NAME}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_DESCR}></th>
+                <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_CREDITS}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_TPL}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_SLIDESHOW_PARAMS}></th>
                 <th class="center"><{$smarty.const._AM_WGSLIDER_STATUS}></th>
@@ -21,11 +22,12 @@
                 <td class=''><{$slideshow.id|default:false}></td>
                 <td class=''><{$slideshow.name|default:false}></td>
                 <td class=''><{$slideshow.descr|default:false}></td>
+                <td class=''><{$slideshow.credits|default:false}></td>
                 <td class=''><{$slideshow.tpl|default:false}></td>
                 <td class=''>
                     <ul>
                         <{foreach $slideshow.params_arr|default:[] as $key => $value name=loop}>
-                            <li><strong><{$key}>:</strong> <{$value}></li>
+                            <li><strong><{$value.descr}>:</strong> <{$value.value}></li>
                         <{/foreach}>
                     </ul>
                 </td>
