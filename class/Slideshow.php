@@ -109,6 +109,8 @@ class Slideshow extends \XoopsObject
         $helper = \XoopsModules\Wgslider\Helper::getInstance();
         $slideshowHandler = $helper->getHandler('Slideshow');
         $paramLang = $slideshowHandler->loadParamLanguage();
+        $defaultParams = $slideshowHandler->getDefaultParamsById((int)$this->getVar('id'));
+        $param_arr = \array_replace($defaultParams, $param_arr);
         $paramTray = new \XoopsFormElementTray(\_AM_WGSLIDER_SLIDESHOW_PARAMS, '<br>');
         foreach ($param_arr as $key => $value) {
             switch ($key) {
@@ -129,6 +131,7 @@ class Slideshow extends \XoopsObject
                 case 'show_thumbs':
                 case 'pauseOnMouse':
                 case 'autoheight':
+                case 'autoplay':
                     $truefalseSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
                     $truefalseSelect[$key]->addOption('true', 'true');
                     $truefalseSelect[$key]->addOption('false', 'false');

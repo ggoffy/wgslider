@@ -60,8 +60,7 @@
 
 </style>
 
-
-<div class="swiper wgs-swiper"
+<div id="wgs-swiper-<{$wgslider_identifier}>" class="swiper wgs-swiper"
      data-effect="<{$wgs_params.effect}>"
      data-perview="<{$wgs_params.perview}>"
      data-autoplay="<{$wgs_params.autoplay}>">
@@ -89,7 +88,7 @@
 
 <{if $wgs_params.show_thumbs}>
     <!-- Thumbnail Slider -->
-    <div class="swiper wgs-swiper-thumbs">
+    <div id="wgs-swiper-thumbs-<{$wgslider_identifier}>" class="swiper wgs-swiper-thumbs">
         <div class="swiper-wrapper">
             <{foreach item=slide from=$block}>
                 <div class="swiper-slide">

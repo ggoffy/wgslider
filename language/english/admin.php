@@ -93,6 +93,7 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_BT3', 'Bootstrap3 Carousel requires a theme based on Bootstrap 3');
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_BT5', 'Bootstrap5 Carousel requires a theme based on Bootstrap 5');
 \define('_AM_WGSLIDER_SLIDESHOW_DESCR_SWIPER', 'Swiper Slideshow without any additional requirements');
+\define('_AM_WGSLIDER_SLIDESHOW_DESCR_SPLIDE', 'Splide Slideshow without any additional requirements');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET_SURE', 'Do you really want to reset all slideshows? All your current settings for parameters will be lost.');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET_OK', 'Reset of all slideshows successfully done');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET_ERROR', 'An error occurred while resetting the slideshow');

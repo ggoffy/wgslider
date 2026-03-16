@@ -21,7 +21,7 @@
     <div class="carousel-inner">
         <{foreach $block as $slider_images name=loop}>
         <li class="item <{if $smarty.foreach.loop.index == 0}>active<{/if}>">
-            <img class="img-fluid" alt="<{$slider_images.tooltip}>" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_images.realname}>">
+            <img class="img-fluid" alt="<{$slider_images.description}>" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_images.realname}>">
         </li>
         <{/foreach}>
     </div>

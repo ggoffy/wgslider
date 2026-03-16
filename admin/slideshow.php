@@ -148,6 +148,22 @@ switch ($op) {
                 'autoheight'      => Request::getString('autoheight'),
             ];
         }
+        if (Constants::SLIDESHOW_SPLIDE === $slsId) {
+            $params = [
+                'delay'           => Request::getInt('delay'),
+                'effect'          => Request::getString('effect'),
+                'perview'         => Request::getString('perview'),
+                'autoplay'        => Request::getString('autoplay'),
+                'show_indicator'  => Request::getString('show_indicator'),
+                'show_prev_next'  => Request::getString('show_prev_next'),
+                'show_caption'    => Request::getString('show_caption'),
+                'show_descr'      => Request::getString('show_descr'),
+                'show_thumbs'     => Request::getString('show_thumbs'),
+                'pauseOnMouse'    => Request::getString('pauseOnMouse'),
+                'bg_caption'      => Request::getString('bg_caption'),
+                'autoheight'      => Request::getString('autoheight'),
+            ];
+        }
         $paramsJSON = json_encode($params);
         $slideshowObj->setVar('params', $paramsJSON);
         $slideshowObj->setVar('status', Request::getInt('status'));

@@ -165,6 +165,8 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
         $defaultSliders[] = $this->getSlideshowBt3();
         $defaultSliders[] = $this->getSlideshowBt5();
         $defaultSliders[] = $this->getSlideshowSwiper();
+        $defaultSliders[] = $this->getSlideshowSplide();
+
 
         foreach ($defaultSliders as $slider) {
             $slideshowObj = $slideshowHandler->get($slider['id']);
@@ -332,10 +334,10 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             'status'    =>  Constants::STATUS_ONLINE,
             'credits'   =>  'https://swiperjs.com',
             'params'    => json_encode([
-                'delay'           => 4000,
+                'interval'        => 4000,
                 'effect'          => 'slide',
                 'perview'         => 1,
-                'autoplay'        => 1,
+                'autoplay'        => 'true',
                 'show_indicator'  => 'true',
                 'show_prev_next'  => 'true',
                 'show_caption'    => 'true',
@@ -346,5 +348,63 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
                 'autoheight'      => 'true',
             ])
         ];
+    }
+
+    /**
+     * function getSlideshowSplide to get settings for splide
+     *
+     * @return array
+     */
+    private function getSlideshowSplide(): array
+    {
+        return [
+            'id'        => Constants::SLIDESHOW_SPLIDE,
+            'name'      => 'Splide',
+            'descr'     => _AM_WGSLIDER_SLIDESHOW_DESCR_SPLIDE,
+            'tpl'       => 'wgslider_slideshow_splide.tpl',
+            'status'    =>  Constants::STATUS_ONLINE,
+            'credits'   =>  'https://splidejs.com/',
+            'params'    => json_encode([
+                'interval'        => 4000,
+                'effect'          => 'slide',
+                'perview'         => 1,
+                'autoplay'        => 'true',
+                'show_indicator'  => 'true',
+                'show_prev_next'  => 'true',
+                'show_caption'    => 'true',
+                'show_descr'      => 'true',
+                'show_thumbs'     => 'false',
+                'pauseOnMouse'    => 'true',
+                'bg_caption'      => 'hard',
+                'autoheight'      => 'true',
+            ])
+        ];
+    }
+
+    /**
+     * function getDefaultParamsById to get default params
+     *
+     * @return array
+     */
+    public function getDefaultParamsById(int $slideshowId): array
+    {
+        switch ($slideshowId) {
+            case Constants::SLIDESHOW_DEFAULT:
+                $data = $this->getSlideshowDefault();
+                break;
+            case Constants::SLIDESHOW_BT3:
+                $data = $this->getSlideshowBt3();
+                break;
+            case Constants::SLIDESHOW_BT5:
+                $data = $this->getSlideshowBt5();
+                break;
+            case Constants::SLIDESHOW_SWIPER:
+                $data = $this->getSlideshowSwiper();
+                break;
+            default:
+                return [];
+        }
+
+        return \json_decode($data['params'], true) ?: [];
     }
 }
