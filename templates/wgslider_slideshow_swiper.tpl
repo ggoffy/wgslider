@@ -80,7 +80,7 @@
             </div>
         <{/foreach}>
     </div>
-    
+
     <{if $wgs_params.show_indicator}>
         <div class="swiper-pagination"></div>
     <{/if}>
@@ -147,7 +147,7 @@
 
                 autoplay: autoplay ? {
                     delay: 4000,
-                    pauseOnMouseEnter: <{$wgs_params.pauseOnMouse}>,
+                    pauseOnMouseEnter: <{$wgs_params.pauseOnMouse|@json_encode}>,
                     disableOnInteraction: false
                 } : false,
 
@@ -165,7 +165,7 @@
                 },
                 <{/if}>
 
-                autoHeight: <{$wgs_params.autoheight}>,
+                autoHeight: <{$wgs_params.autoheight|@json_encode}>,
 
                 lazy: {
                     loadPrevNext: true
