@@ -335,7 +335,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             'status'    =>  Constants::STATUS_ONLINE,
             'credits'   =>  'https://swiperjs.com',
             'params'    => json_encode([
-                'interval'        => 4000,
+                'delay'           => 4000,
                 'effect'          => 'slide',
                 'perview'         => 1,
                 'autoplay'        => 'true',

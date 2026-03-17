@@ -146,7 +146,7 @@
                 slidesPerView: perview,
 
                 autoplay: autoplay ? {
-                    delay: 4000,
+                    delay: <{$wgs_params.delay}>,
                     pauseOnMouseEnter: <{$wgs_params.pauseOnMouse|@json_encode}>,
                     disableOnInteraction: false
                 } : false,
