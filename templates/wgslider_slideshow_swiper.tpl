@@ -96,7 +96,7 @@
         <div class="swiper-wrapper">
             <{foreach item=slide from=$block}>
                 <div class="swiper-slide">
-                    <img src="<{$wgslider_upload_image_url}>/<{$slide.realname}>" alt="">
+                    <img src="<{$wgslider_upload_image_url|default:''}>/<{$slide.realname}>" alt="">
                 </div>
             <{/foreach}>
         </div>
