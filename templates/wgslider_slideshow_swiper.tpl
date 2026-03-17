@@ -167,9 +167,7 @@
 
                 autoHeight: <{$wgs_params.autoheight|@json_encode}>,
 
-                lazy: {
-                    loadPrevNext: true
-                }
+                lazyPreloadPrevNext: 1
 
             };
 
