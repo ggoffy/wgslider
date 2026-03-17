@@ -402,6 +402,9 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             case Constants::SLIDESHOW_SWIPER:
                 $data = $this->getSlideshowSwiper();
                 break;
+            case Constants::SLIDESHOW_SPLIDE:
+                $data = $this->getSlideshowSplide();
+                break;
             default:
                 return [];
         }
