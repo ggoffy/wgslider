@@ -124,6 +124,8 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_EFFECT', 'Effekt');
 \define('_AM_WGSLIDER_SLIDESHOW_BG_CAPTION', 'Hintergrund Titel');
 \define('_AM_WGSLIDER_SLIDESHOW_AUTOHEIGHT', 'Bildhöhe automatisch anpassen');
+\define('_AM_WGSLIDER_SLIDESHOW_GAP', 'Abstand zwischen den Bildern');
+\define('_AM_WGSLIDER_SLIDESHOW_GAP_DESC', 'Wird nur verwendet wenn "' . _AM_WGSLIDER_SLIDESHOW_PERVIEW . '" größer als 1 ist');
 
 // General
 \define('_AM_WGSLIDER_DATECREATED', 'Erstellt am');

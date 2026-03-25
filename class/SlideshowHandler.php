@@ -148,6 +148,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
         $paramLang['pauseOnMouse'] = \_AM_WGSLIDER_SLIDESHOW_PAUSE;
         $paramLang['bg_caption'] = \_AM_WGSLIDER_SLIDESHOW_BG_CAPTION;
         $paramLang['autoheight'] = \_AM_WGSLIDER_SLIDESHOW_AUTOHEIGHT;
+        $paramLang['gap'] = \_AM_WGSLIDER_SLIDESHOW_GAP;
 
         return $paramLang;
     }
@@ -367,17 +368,15 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             'credits'   =>  'https://splidejs.com/',
             'params'    => json_encode([
                 'interval'        => 4000,
-                'effect'          => 'slide',
                 'perview'         => 1,
                 'autoplay'        => 'true',
                 'show_indicator'  => 'true',
                 'show_prev_next'  => 'true',
                 'show_caption'    => 'true',
                 'show_descr'      => 'true',
-                'show_thumbs'     => 'false',
                 'pauseOnMouse'    => 'true',
-                'bg_caption'      => 'hard',
-                'autoheight'      => 'true',
+                'gap'             => '0.1rem',
+                'show_thumbs'     => 'false',
             ])
         ];
     }

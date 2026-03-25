@@ -132,6 +132,7 @@ switch ($op) {
                 case 'effect':
                 case 'bg_caption':
                 case 'pause':
+                case 'gap':
                 default:
                     $params[$key] = Request::getString($key);
                     break;

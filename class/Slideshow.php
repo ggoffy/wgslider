@@ -132,38 +132,48 @@ class Slideshow extends \XoopsObject
                 case 'pauseOnMouse':
                 case 'autoheight':
                 case 'autoplay':
-                    $truefalseSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
-                    $truefalseSelect[$key]->addOption('true', 'true');
-                    $truefalseSelect[$key]->addOption('false', 'false');
-                    $paramTray->addElement($truefalseSelect[$key]);
+                    $fieldSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $fieldSelect[$key]->addOption('true', 'true');
+                    $fieldSelect[$key]->addOption('false', 'false');
+                    $paramTray->addElement($fieldSelect[$key]);
                     break;
                 //swiper
                 case 'effect':
-                    $effectSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
-                    $effectSelect[$key]->addOption('slide', 'slide');
-                    $effectSelect[$key]->addOption('fade', 'fade');
-                    $effectSelect[$key]->addOption('coverflow', 'coverflow');
-                    $paramTray->addElement($effectSelect[$key]);
+                    $fieldSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $fieldSelect[$key]->addOption('slide', 'slide');
+                    $fieldSelect[$key]->addOption('fade', 'fade');
+                    $fieldSelect[$key]->addOption('coverflow', 'coverflow');
+                    $paramTray->addElement($fieldSelect[$key]);
                     break;
                 case 'perview':
-                    $effectSelect[$key] = new \XoopsFormSelect($paramLang[$key] . ':', $key, $value);
+                    $fieldSelect[$key] = new \XoopsFormSelect($paramLang[$key] . ':', $key, $value);
                     for ($i = 1 ; $i <= 5 ; $i++) {
-                        $effectSelect[$key]->addOption($i, $i);
+                        $fieldSelect[$key]->addOption($i, $i);
                     }
-                    $paramTray->addElement($effectSelect[$key]);
+                    $paramTray->addElement($fieldSelect[$key]);
                     break;
                 case 'bg_caption':
-                    $bgcaptionSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
-                    $bgcaptionSelect[$key]->addOption('smooth', 'smooth');
-                    $bgcaptionSelect[$key]->addOption('hard', 'hard');
-                    $paramTray->addElement($bgcaptionSelect[$key]);
+                    $fieldSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $fieldSelect[$key]->addOption('smooth', 'smooth');
+                    $fieldSelect[$key]->addOption('hard', 'hard');
+                    $paramTray->addElement($fieldSelect[$key]);
                     break;
                     // misc params
                 case 'pause':
-                    $truefalseSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
-                    $truefalseSelect[$key]->addOption('hover', 'hover');
-                    $truefalseSelect[$key]->addOption('false', 'false');
-                    $paramTray->addElement($truefalseSelect[$key]);
+                    $fieldSelect[$key] = new \XoopsFormRadio($paramLang[$key] . ':', $key, $value);
+                    $fieldSelect[$key]->addOption('hover', 'hover');
+                    $fieldSelect[$key]->addOption('false', 'false');
+                    $paramTray->addElement($fieldSelect[$key]);
+                    break;
+                //splide
+                case 'gap':
+                    $fieldSelect[$key] = new \XoopsFormSelect($paramLang[$key] . ':', $key, $value);
+                    $fieldSelect[$key]->setDescription(\_AM_WGSLIDER_SLIDESHOW_GAP_DESC);
+                    $fieldSelect[$key]->addOption('0', '0');
+                    $fieldSelect[$key]->addOption('0.1rem', '0.1rem');
+                    $fieldSelect[$key]->addOption('0.5rem', '0.5rem');
+                    $fieldSelect[$key]->addOption('1rem', '1rem');
+                    $paramTray->addElement($fieldSelect[$key]);
                     break;
             }
         }

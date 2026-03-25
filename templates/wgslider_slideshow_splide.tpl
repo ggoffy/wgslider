@@ -24,6 +24,17 @@
     .splide__slide {
         position: relative;
     }
+
+    <{if $wgs_params.show_thumbs}>
+        #thumbnail-splide-slider-<{$wgslider_identifier}> {
+            margin-top: 3px;
+        }
+        #thumbnail-splide-slider-<{$wgslider_identifier}> .splide__slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    <{/if}>
 </style>
 
 
@@ -31,7 +42,7 @@
      data-perpage="<{$wgs_params.perview}>"
      data-autoplay="<{$wgs_params.autoplay}>">
 
-    <div class="splide__track">
+    <div id="splide-slider-<{$wgslider_identifier}>" class="splide__track">
         <ul class="splide__list">
             <{foreach item=slide from=$block}>
                 <li class="splide__slide">
@@ -50,20 +61,34 @@
     </div>
 </div>
 
+<{if $wgs_params.show_thumbs}>
+    <!-- Thumbnail-Slider -->
+    <div id="thumbnail-splide-slider-<{$wgslider_identifier}>" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <{foreach item=slide from=$block}>
+                    <li class="splide__slide"><img src="<{$wgslider_upload_image_url}>/<{$slide.realname}>" alt="<{$slide.name}>"></li>
+                <{/foreach}>
+            </ul>
+        </div>
+    </div>
+<{/if}>
+
 <script>
 
     document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelectorAll('.wgs-splide').forEach(function (slider) {
 
-            const perpage = parseInt(slider.dataset.perpage) || 1;
-            const autoplay = slider.dataset.autoplay === "1";
+            const perpage = parseInt(<{$wgs_params.perview}>) || 1;
+            const autoplay = "<{$wgs_params.autoplay}>" === "1";
 
             const options = {
 
                 type: 'loop',
                 perPage: perpage,
                 autoplay: autoplay,
+                gap: <{$wgs_params.gap|@json_encode}>,
                 interval: <{$wgs_params.interval}>,
                 pauseOnHover: <{$wgs_params.pauseOnMouse|@json_encode}>,
                 arrows:  <{$wgs_params.show_indicator|@json_encode}>,
@@ -79,7 +104,30 @@
                 };
             }
 
-            new Splide(slider, options).mount();
+            const main = new Splide(slider, options);
+
+            <{if $wgs_params.show_thumbs}>
+                const thumbnails = new Splide('#thumbnail-splide-slider-<{$wgslider_identifier}>', {
+                    fixedWidth  : 100,
+                    fixedHeight : 60,
+                    gap         : 10,
+                    rewind      : true,
+                    pagination  : false,
+                    isNavigation: true,
+                    focus       : 'center',
+                    breakpoints : {
+                        600: {
+                            fixedWidth : 60,
+                            fixedHeight: 40,
+                        },
+                    },
+                });
+                thumbnails.mount();
+                main.sync(thumbnails);
+            <{/if}>
+
+            main.mount();
+
         });
     });
 
