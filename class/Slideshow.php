@@ -108,26 +108,30 @@ class Slideshow extends \XoopsObject
         }
         $helper = \XoopsModules\Wgslider\Helper::getInstance();
         $slideshowHandler = $helper->getHandler('Slideshow');
-        $paramLang = $slideshowHandler->loadParamLanguage();
         $defaultParams = $slideshowHandler->getDefaultParamsById((int)$this->getVar('id'));
         $param_arr = \array_replace($defaultParams, $param_arr);
         $paramTray = new \XoopsFormElementTray(\_AM_WGSLIDER_SLIDESHOW_PARAMS, '<br>');
         foreach ($param_arr as $key => $value) {
+            $label       = defined($value['label']) ?  constant($value['label']) : 'missing label';
+            $description = defined($value['label'] . '_DESCR') ?  constant($value['label'] . '_DESCR') : '';
             switch ($value['form']) {
                 // params with text or integer
                 case 'int':
                 default:
-                    $paramTray->addElement(new \XoopsFormText(constant($value['label']), $key, 10, 255, $value['default']), true);
+                    $paramTray->addElement(new \XoopsFormText($label, $key, 10, 255, $value['default']), true);
                     break;
                 case 'radio':
-                    $radioSelect[$key] = new \XoopsFormRadio(constant($value['label']) . ':', $key, $value['default']);
+                    $radioSelect[$key] = new \XoopsFormRadio($label . ':', $key, $value['default']);
                     foreach ($value['options'] as $keyOption => $valueOption) {
                         if (substr((string)$valueOption, 0, 1) == '_') {
-                            $label = defined($valueOption) ?  constant($valueOption) : 'missing label';
-                            $radioSelect[$key]->addOption($keyOption, $label);
+                            $labelOption = defined($valueOption) ?  constant($valueOption) : 'missing label';
+                            $radioSelect[$key]->addOption($keyOption, $labelOption);
                         } else {
                             $radioSelect[$key]->addOption($keyOption, $valueOption);
                         }
+                    }
+                    if ($description != '') {
+                        $radioSelect[$key]->setDescription($description);
                     }
                     $paramTray->addElement($radioSelect[$key]);
                     break;
@@ -135,11 +139,14 @@ class Slideshow extends \XoopsObject
                     $selectSelect[$key] = new \XoopsFormSelect(constant($value['label']) . ':', $key, $value['default']);
                     foreach ($value['options'] as $keyOption => $valueOption) {
                         if (substr((string)$valueOption, 0, 1) == '_') {
-                            $label = defined($valueOption) ?  constant($valueOption) : 'missing label';
-                            $selectSelect[$key]->addOption($keyOption, $label);
+                            $labelOption = defined($valueOption) ?  constant($valueOption) : 'missing label';
+                            $selectSelect[$key]->addOption($keyOption, $labelOption);
                         } else {
                             $selectSelect[$key]->addOption($keyOption, $valueOption);
                         }
+                    }
+                    if ($description != '') {
+                        $selectSelect[$key]->setDescription($description);
                     }
                     $paramTray->addElement($selectSelect[$key]);
                     break;

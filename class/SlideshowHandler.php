@@ -141,8 +141,6 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             $slideshowObj = $slideshowHandler->get($slider['id']);
             if (!$slideshowObj) {
                 $slideshowObj = $slideshowHandler->create();
-            } else {
-                $slideshowObj = $slideshowHandler->get($slider['id']);
             }
             $slideshowObj->setVar('id', $slider['id']);
             $slideshowObj->setVar('name', $slider['name']);
@@ -570,7 +568,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
                     'type' => 'text',
                     'default' => '0.1rem',
                     'form' => 'select',
-                    'label' => '_AM_WGSLIDER_SLIDESHOW_PAUSE',
+                    'label' => '_AM_WGSLIDER_SLIDESHOW_GAP',
                     'options' => ['0.1rem' => '0.1rem', '0.2rem' => '0.2rem','0.5rem' => '0.5rem','1rem' => '1rem'],
                 ],
                 'show_thumbs' => [
