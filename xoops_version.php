@@ -30,7 +30,7 @@ include \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/preloads/autoloader.
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGSLIDER_NAME,
-    'version'             => '1.0.0',
+    'version'             => '1.0.1',
     'description'         => \_MI_WGSLIDER_DESC,
     'author'              => 'Goffy - wedega',
     'author_mail'         => 'webmaster@wedega.com',

@@ -22,9 +22,10 @@ declare(strict_types=1);
  */
 
 use Xmf\Request;
-use XoopsModules\Wgslider;
-use XoopsModules\Wgslider\Constants;
-use XoopsModules\Wgslider\Common;
+use XoopsModules\Wgslider\{
+    Constants,
+    Common
+};
 
 require __DIR__ . '/header.php';
 // Get all request values
@@ -73,6 +74,54 @@ switch ($op) {
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSLIDER_THEREARENT_CATEGORIES);
         }
+        break;
+    case 'preview':
+        if ($catId > 0) {
+            $categoryObj = $categoryHandler->get($catId);
+        } else {
+            \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
+        if (!$categoryObj) {
+            \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
+
+        $GLOBALS['xoTheme']->addStylesheet($style, null);
+        $templateMain = 'wgslider_admin_category.tpl';
+
+        $slsElements = $slideshowHandler->getSlideshowElements($catId, 0, true, true);
+
+        if (empty($slsElements['block']['images'])) {
+            $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSLIDER_THEREARENT_IMAGES);
+            break;
+        }
+
+        $slsId = (int)$categoryObj->getVar('slideshow');
+        switch ($slsId) {
+            case 0:
+            default:
+                \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+                break;
+
+            case Constants::SLIDESHOW_DEFAULT:
+            case Constants::SLIDESHOW_SPLIDE:
+            case Constants::SLIDESHOW_SWIPER:
+                // no assets needed, they are in the template
+                break;
+            case Constants::SLIDESHOW_BT3:
+            case Constants::SLIDESHOW_BT5:
+                $css = $slsElements['block']['assets']['css'];
+                $js = $slsElements['block']['assets']['js'];
+                $GLOBALS['xoTheme']->addStylesheet($css, null);
+                $GLOBALS['xoTheme']->addScript($js);
+                break;
+        }
+        $slsIdentifier = md5(uniqid((string)$catId, true));
+        $GLOBALS['xoopsTpl']->assign('wgslider_upload_image_url', WGSLIDER_UPLOAD_IMAGE_URL);
+        $GLOBALS['xoopsTpl']->assign('wgslider_url', WGSLIDER_URL);
+        $GLOBALS['xoopsTpl']->assign('wgslider_identifier', $slsIdentifier);
+        $GLOBALS['xoopsTpl']->assign('wgslider_slideshow_tpl', $slsElements['slsTpl']);
+        $GLOBALS['xoopsTpl']->assign('block', $slsElements['block']);
+        $GLOBALS['xoopsTpl']->assign('preview', true);
         break;
     case 'change_status':
         if (!$GLOBALS['xoopsSecurity']->check()) {

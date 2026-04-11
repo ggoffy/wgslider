@@ -10,14 +10,14 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        <{if $wgs_params.bg_caption == 'smooth'}>
+        <{if $block.params.bg_caption == 'smooth'}>
         background: linear-gradient(
                 to top,
                 rgba(0,0,0,0.9),
                 rgba(0,0,0,0)
         );
         <{/if}>
-        <{if $wgs_params.bg_caption == 'hard'}>
+        <{if $block.params.bg_caption == 'hard'}>
         background: rgba(0,0,0,0.5);
         <{/if}>
         color: #fff;
@@ -36,7 +36,7 @@
         position: relative;
     }
 
-    <{if $wgs_params.show_thumbs}>
+    <{if $block.params.show_thumbs}>
     /*Thumbnail Slider*/
     .wgs-swiper-thumbs {
         margin-top: 10px;
@@ -61,40 +61,39 @@
 </style>
 
 <div id="wgs-swiper-<{$wgslider_identifier}>" class="swiper wgs-swiper"
-     data-effect="<{$wgs_params.effect}>"
-     data-perview="<{$wgs_params.perview}>"
-     data-autoplay="<{$wgs_params.autoplay}>">
+     data-effect="<{$block.params.effect}>"
+     data-perview="<{$block.params.perview}>"
+     data-autoplay="<{$block.params.autoplay}>">
     <div class="swiper-wrapper">
-        <{foreach item=slide from=$block}>
+        <{foreach item=slide from=$block['images']}>
             <div class="swiper-slide">
                 <img class="swiper-lazy" src="<{$wgslider_upload_image_url|default:''}>/<{$slide.realname}>" alt="<{$slide.name}>">
-                <{if $slide.name && $wgs_params.show_caption}>
+                <{if $slide.name && $block.params.show_caption}>
                     <div class="wgs-caption">
                         <h4 class="wgs-caption-h"><{$slide.name}></h4>
-                        <{if $slide.description && $wgs_params.show_descr}>
+                        <{if $slide.description && $block.params.show_descr}>
                         <p class="wgs-caption-p"><{$slide.description}></p>
                         <{/if}>
                     </div>
                 <{/if}>
-                <div class="swiper-lazy-preloader"></div>
             </div>
         <{/foreach}>
     </div>
 
-    <{if $wgs_params.show_indicator}>
+    <{if $block.params.show_indicator}>
         <div class="swiper-pagination"></div>
     <{/if}>
-    <{if $wgs_params.show_prev_next}>
+    <{if $block.params.show_prev_next}>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     <{/if}>
 </div>
 
-<{if $wgs_params.show_thumbs}>
+<{if $block.params.show_thumbs}>
     <!-- Thumbnail Slider -->
     <div id="wgs-swiper-thumbs-<{$wgslider_identifier}>" class="swiper wgs-swiper-thumbs">
         <div class="swiper-wrapper">
-            <{foreach item=slide from=$block}>
+            <{foreach item=slide from=$block['images']}>
                 <div class="swiper-slide">
                     <img src="<{$wgslider_upload_image_url|default:''}>/<{$slide.realname}>" alt="">
                 </div>
@@ -118,7 +117,7 @@
             let thumbsSwiper = null;
 
             // link thumbnail-slider to related slider
-            <{if $wgs_params.show_thumbs}>
+            <{if $block.params.show_thumbs}>
             const thumbsEl = slider.parentNode.querySelector('.wgs-swiper-thumbs');
 
             if (thumbsEl) {
@@ -146,28 +145,26 @@
                 slidesPerView: perview,
 
                 autoplay: autoplay ? {
-                    delay: <{$wgs_params.delay}>,
-                    pauseOnMouseEnter: <{$wgs_params.pauseOnMouse|@json_encode}>,
+                    delay: <{$block.params.delay}>,
+                    pauseOnMouseEnter: <{$block.params.pauseOnMouse|@json_encode}>,
                     disableOnInteraction: false
                 } : false,
 
-                <{if $wgs_params.show_indicator}>
+                <{if $block.params.show_indicator}>
                 pagination: {
                     el: slider.querySelector('.swiper-pagination'),
                     clickable: true
                 },
                 <{/if}>
 
-                <{if $wgs_params.show_prev_next}>
+                <{if $block.params.show_prev_next}>
                 navigation: {
                     nextEl: slider.querySelector('.swiper-button-next'),
                     prevEl: slider.querySelector('.swiper-button-prev')
                 },
                 <{/if}>
 
-                autoHeight: <{$wgs_params.autoheight|@json_encode}>,
-
-                lazyPreloadPrevNext: 1
+                autoHeight: <{$block.params.autoheight|@json_encode}>
 
             };
 
@@ -181,7 +178,7 @@
             }
 
             // link thumbnails if necessary
-            <{if $wgs_params.show_thumbs}>
+            <{if $block.params.show_thumbs}>
             if (thumbsSwiper) {
                 options.thumbs = {
                     swiper: thumbsSwiper

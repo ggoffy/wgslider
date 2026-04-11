@@ -47,9 +47,9 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_SHOW', 'Show Slideshow');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET', 'Reset All Slideshows');
 // Lists
-\define('_AM_WGSLIDER_LIST_CATEGORY', 'List of Category');
-\define('_AM_WGSLIDER_LIST_IMAGE', 'List of Image');
-\define('_AM_WGSLIDER_LIST_SLIDESHOW', 'List of Slideshow');
+\define('_AM_WGSLIDER_LIST_CATEGORY', 'List of Categories');
+\define('_AM_WGSLIDER_LIST_IMAGE', 'List of Images');
+\define('_AM_WGSLIDER_LIST_SLIDESHOW', 'List of Slideshows');
 // ---------------- Admin Classes ----------------
 // Category display types
 \define('_AM_WGSLIDER_DISPLAY_BLOCK', 'Display as a block');

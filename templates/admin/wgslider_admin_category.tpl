@@ -45,9 +45,12 @@
                     </form>
                 </td>
                 <td class="center width5">
-                    <a href="category.php?op=edit&amp;id=<{$category.id|default:false}>&amp;start=<{$start|default:0}>&amp;limit=<{$limit|default:0}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> category" ></a>
-                    <a href="category.php?op=clone&amp;id_source=<{$category.id|default:false}>" title="<{$smarty.const._CLONE}>"><img src="<{xoModuleIcons16 'editcopy.png'}>" alt="<{$smarty.const._CLONE}> category" ></a>
-                    <a href="category.php?op=delete&amp;id=<{$category.id|default:false}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 'delete.png'}>" alt="<{$smarty.const._DELETE}> category" ></a>
+                    <div class="xo-buttons">
+                        <a href="category.php?op=preview&id=<{$category.id|default:false}>" title="<{$smarty.const._PREVIEW}>"><i class="fa fa-eye"></i></a>
+                        <a href="category.php?op=edit&id=<{$category.id|default:false}>&start=<{$start|default:0}>&limit=<{$limit|default:0}>" title="<{$smarty.const._EDIT}>"><i class="fa fa-edit"></i></a>
+                        <a href="category.php?op=clone&id_source=<{$category.id|default:false}>" title="<{$smarty.const._CLONE}>"><i class="fa fa-copy"></i></a>
+                        <a href="category.php?op=delete&id=<{$category.id|default:false}>" title="<{$smarty.const._DELETE}>"><i class="fa fa-trash"></i></a>
+                    </div>
                 </td>
             </tr>
             <{/foreach}>
@@ -65,6 +68,25 @@
 <{/if}>
 <{if $error|default:''}>
     <div class="errorMsg"><strong><{$error|default:false}></strong></div>
+<{/if}>
+
+<{if $preview|default:false}>
+    <{if $preview_css|default:[]}>
+        <{foreach item=css from=$preview_css}><{/foreach}>
+    <{/if}>
+    <{if $preview_js|default:[]}>
+        <{foreach item=js from=$preview_js}><{/foreach}>
+    <{/if}>
+    <div class="wgs-preview-container">
+        <div class="wgs-preview-container-header center">
+            <div class="xo-buttons">
+                <a href="category.php?op=list" title="<{$smarty.const._AM_WGSLIDER_LIST_CATEGORY}>"><i class="fa fa-list"></i> <{$smarty.const._AM_WGSLIDER_LIST_CATEGORY}> </a>
+            </div>
+        </div>
+        <div class="wgs-preview-container-body center">
+            <{include file="db:$wgslider_slideshow_tpl" block=$block}>
+        </div>
+    </div>
 <{/if}>
 
 <!-- Footer -->

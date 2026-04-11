@@ -53,6 +53,7 @@ class Slideshow extends \XoopsObject
         $this->initVar('descr', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('tpl', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('params', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('assets', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('status', \XOBJ_DTYPE_INT);
         $this->initVar('credits', \XOBJ_DTYPE_TXTBOX);
     }

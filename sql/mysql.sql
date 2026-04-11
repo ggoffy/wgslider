@@ -56,6 +56,7 @@ CREATE TABLE `wgslider_slideshow` (
   `descr`   VARCHAR(255)    NOT NULL DEFAULT '',
   `tpl`     VARCHAR(255)    NOT NULL DEFAULT '',
   `credits` VARCHAR(255)    NOT NULL DEFAULT '',
+  `assets`  VARCHAR(2000)   NOT NULL DEFAULT '',
   `params`  VARCHAR(2000)   NOT NULL DEFAULT '',
   `status`  INT(1)          NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
