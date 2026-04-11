@@ -3,7 +3,7 @@
 <div id="carousel<{$wgslider_identifier}>" class="carousel slide" data-bs-ride="carousel">
     <{if $block.params.show_indicator}>
     <div class="carousel-indicators">
-        <{foreach $block as $slider_image name=loop}>
+        <{foreach $block['images'] as $slider_image name=loop}>
         <button type="button" data-bs-target="#carousel<{$wgslider_identifier}>" data-bs-slide-to="<{$smarty.foreach.loop.index}>" class="<{if $smarty.foreach.loop.index == 0}>active<{/if}>" aria-current="true" aria-label="Slide <{$smarty.foreach.loop.index}>"></button>
         <{/foreach}>
     </div>

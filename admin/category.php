@@ -101,7 +101,6 @@ switch ($op) {
             default:
                 \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
                 break;
-
             case Constants::SLIDESHOW_DEFAULT:
             case Constants::SLIDESHOW_SPLIDE:
             case Constants::SLIDESHOW_SWIPER:

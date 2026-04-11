@@ -167,8 +167,11 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
     public function getSlideshowElements(int $catId, int $display, bool $assets = false, bool $preview = false): array
     {
         $helper = \XoopsModules\Wgslider\Helper::getInstance();
-        $imageHandler = $helper->getHandler('Image');
+        $imageHandler    = $helper->getHandler('Image');
         $categoryHandler = $helper->getHandler('Category');
+        $block     = [];
+        $slsParams = [];
+        $slsAssets = [];
 
         $categoryObj = $categoryHandler->get($catId);
         if (is_object($categoryObj)) {
@@ -181,8 +184,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             $slideshowObj = $this->get($categoryObj->getVar('slideshow'));
             if (is_object($slideshowObj)) {
                 $slsTpl = $slideshowObj->getVar('tpl');
-                $slsParams = [];
-                $slsAssets = [];
+
                 $params = json_decode($slideshowObj->getVar('params', 'n'), true);
                 if (!\is_array($params)) {
                     $params = [];
@@ -224,6 +226,8 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
                 $block['images'][$i]['description'] = \htmlspecialchars($imageAll[$i]->getVar('description'), ENT_QUOTES | ENT_HTML5);
                 $block['images'][$i]['realname'] = $imageAll[$i]->getVar('realname');
             }
+        } else {
+            $block['images'] = [];
         }
         unset($crImage);
 

@@ -13,7 +13,7 @@
     <!-- Indicators -->
     <{if $block.params.show_indicator}>
     <ol class="carousel-indicators">
-        <{foreach $block as $slider_images name=loop}>
+        <{foreach $block['images'] as $slider_images name=loop}>
         <li class="<{if $smarty.foreach.loop.index == 0}>active<{/if}>" data-slide-to="<{$smarty.foreach.loop.index}>" data-target="#myCarousel<{$wgslider_identifier}>"></li>
         <{/foreach}>
     </ol>
