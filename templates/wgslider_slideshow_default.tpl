@@ -6,9 +6,9 @@
 </style>
 
 <div class="wgslider-slider-default center">
-    <{foreach $block as $slider_images}>
+    <{foreach $block['images'] as $slider_image}>
         <div class="wgslider-slider-default-slide">
-            <img class="img-fluid" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_images.realname}>" alt="<{$slider_images.tooltip}>" title="<{$slider_images.tooltip}>">
+            <img class="img-fluid" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_image.realname}>" alt="<{$slider_image.tooltip}>" title="<{$slider_image.tooltip}>">
         </div>
     <{/foreach}>
 </div>
@@ -31,6 +31,6 @@
             slides[slideIndex - 1].style.display = "block";
         }
 
-        setTimeout(showSlides, <{$wgslider_param_timeout|default:1000}>); // 4 seconds
+        setTimeout(showSlides, <{$block.params.timeout|default:1000}>); // 4 seconds
     }
 </script>

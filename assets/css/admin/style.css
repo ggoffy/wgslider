@@ -50,7 +50,7 @@
 .wgs-modal-close {
     position: absolute;
     top: 5px;
-    right: 0;
+    right: 5px;
     width: 35px;
     height: 35px;
     line-height: 25px;
@@ -84,4 +84,18 @@
 
 .wgs-check-info img {
     margin-right: 5px;
+}
+
+/* Slideshow preview */
+.wgs-preview-container {
+    margin: 50px;
+}
+.wgs-preview-container-header,
+.wgs-preview-container-body {
+    max-width: 800px;
+}
+
+/* overwrite default of xoops */
+.xo-buttons a {
+    margin: 2px !important;
 }

@@ -47,9 +47,9 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_SHOW', 'Show Slideshow');
 \define('_AM_WGSLIDER_SLIDESHOW_RESET', 'Reset All Slideshows');
 // Lists
-\define('_AM_WGSLIDER_LIST_CATEGORY', 'List of Category');
-\define('_AM_WGSLIDER_LIST_IMAGE', 'List of Image');
-\define('_AM_WGSLIDER_LIST_SLIDESHOW', 'List of Slideshow');
+\define('_AM_WGSLIDER_LIST_CATEGORY', 'List of Categories');
+\define('_AM_WGSLIDER_LIST_IMAGE', 'List of Images');
+\define('_AM_WGSLIDER_LIST_SLIDESHOW', 'List of Slideshows');
 // ---------------- Admin Classes ----------------
 // Category display types
 \define('_AM_WGSLIDER_DISPLAY_BLOCK', 'Display as a block');
@@ -126,7 +126,21 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_AUTOHEIGHT', 'Adjust image height automatically');
 \define('_AM_WGSLIDER_SLIDESHOW_GAP', 'Gap between images');
 \define('_AM_WGSLIDER_SLIDESHOW_GAP_DESCR', "Used only if '" . _AM_WGSLIDER_SLIDESHOW_PERVIEW . "' is greater than 1");
-
+// Permissions
+\define('_AM_WGSLIDER_PERMS_GLOBAL', 'Permissions global');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT', 'Permissions global to submit and edit all');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT_DESC', 'Groups which should have permissions to <ul><li>create categories</li><li>edit all categories</li><li>upload images to all categories</li></ul>');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_VIEW', 'Permissions to view all');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_VIEW_DESC', 'Groups which should have permissions to view all categories');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_DESC', '<ul>
+                                                <li>' . \_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT . ': ' . \_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT_DESC . '<br></li>
+                                                <li>' . \_AM_WGSLIDER_PERMS_GLOBAL_VIEW . ': ' . \_AM_WGSLIDER_PERMS_GLOBAL_VIEW_DESC . '<br></li>
+                                           </ul>');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT', 'Permissions global to submit and edit own categories');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT_DESC', 'Groups which should have permissions to <ul><li>create categories</li><li>edit only own categories</li><li>upload images only to own categories</li></ul>');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_VIEW', 'Permissions to view this category');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_VIEW_DESC', 'Groups which should have permissions to view this category');
+\define('_AM_WGSLIDER_PERMS_NOTSET', 'No permission set');
 // General
 \define('_AM_WGSLIDER_DATECREATED', 'Datecreated');
 \define('_AM_WGSLIDER_SUBMITTER', 'Submitter');

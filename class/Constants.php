@@ -50,4 +50,11 @@ interface Constants
     public const int SLIDESHOW_SWIPER  = 4;
     public const int SLIDESHOW_SPLIDE  = 5;
 
+    // Constants for permissions
+    public const int PERM_NONE            = 0;
+    public const int PERM_GLOBAL_SUBMIT   = 1;
+    public const int PERM_GLOBAL_VIEW     = 2;
+    public const int PERM_CATEGORY_SUBMIT = 3;
+    public const int PERM_CATEGORY_VIEW   = 4;
+
 }

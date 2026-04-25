@@ -25,7 +25,7 @@
         position: relative;
     }
 
-    <{if $wgs_params.show_thumbs}>
+    <{if $block.params.show_thumbs}>
         #thumbnail-splide-slider-<{$wgslider_identifier}> {
             margin-top: 3px;
         }
@@ -42,13 +42,13 @@
 
     <div class="splide__track">
         <ul class="splide__list">
-            <{foreach item="slide" from=$block}>
+            <{foreach item="slide" from=$block['images']}>
                 <li class="splide__slide">
                     <img src="<{$wgslider_upload_image_url}>/<{$slide.realname}>" alt="<{$slide.name}>">
-                    <{if $slide.name && $wgs_params.show_caption}>
+                    <{if $slide.name && $block.params.show_caption}>
                         <div class="wgs-caption">
                             <h4><{$slide.name}></h4>
-                            <{if $slide.description && $wgs_params.show_descr}>
+                            <{if $slide.description && $block.params.show_descr}>
                                 <p><{$slide.description}></p>
                             <{/if}>
                         </div>
@@ -59,12 +59,12 @@
     </div>
 </div>
 
-<{if $wgs_params.show_thumbs}>
+<{if $block.params.show_thumbs}>
     <!-- Thumbnail-Slider -->
     <div id="thumbnail-splide-slider-<{$wgslider_identifier}>" class="splide">
         <div class="splide__track">
             <ul class="splide__list">
-                <{foreach item="slide" from=$block}>
+                <{foreach item="slide" from=$block['images']}>
                     <li class="splide__slide"><img src="<{$wgslider_upload_image_url}>/<{$slide.realname}>" alt="<{$slide.name}>"></li>
                 <{/foreach}>
             </ul>
@@ -78,19 +78,19 @@
 
         document.querySelectorAll('.wgs-splide').forEach(function (slider) {
 
-            const perpage = parseInt(<{$wgs_params.perview}>) || 1;
-            const autoplay = "<{$wgs_params.autoplay}>" === "1";
+            const perpage = parseInt(<{$block.params.perview}>) || 1;
+            const autoplay = "<{$block.params.autoplay}>" === "1";
 
             const options = {
 
                 type: 'loop',
                 perPage: perpage,
                 autoplay: autoplay,
-                gap: <{$wgs_params.gap|@json_encode}>,
-                interval: <{$wgs_params.interval}>,
-                pauseOnHover: <{$wgs_params.pauseOnMouse|@json_encode}>,
-                arrows:  <{$wgs_params.show_indicator|@json_encode}>,
-                pagination: <{$wgs_params.show_prev_next|@json_encode}>
+                gap: <{$block.params.gap|@json_encode}>,
+                interval: <{$block.params.interval}>,
+                pauseOnHover: <{$block.params.pauseOnMouse|@json_encode}>,
+                arrows:  <{$block.params.show_prev_next|@json_encode}>,
+                pagination: <{$block.params.show_indicator|@json_encode}>
 
             };
 
@@ -104,7 +104,7 @@
 
             const main = new Splide(slider, options);
 
-            <{if $wgs_params.show_thumbs}>
+            <{if $block.params.show_thumbs}>
                 const thumbnails = new Splide('#thumbnail-splide-slider-<{$wgslider_identifier}>', {
                     fixedWidth  : 100,
                     fixedHeight : 60,
@@ -126,7 +126,7 @@
 
             main.mount();
 
-            <{if $wgs_params.show_thumbs}>
+            <{if $block.params.show_thumbs}>
                 thumbnails.mount();
             <{/if}>
 

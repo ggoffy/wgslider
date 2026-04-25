@@ -30,7 +30,7 @@ include \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/preloads/autoloader.
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGSLIDER_NAME,
-    'version'             => '1.0.0',
+    'version'             => '1.0.1',
     'description'         => \_MI_WGSLIDER_DESC,
     'author'              => 'Goffy - wedega',
     'author_mail'         => 'webmaster@wedega.com',
@@ -42,7 +42,7 @@ $modversion = [
     'help'                => 'page=help',
     'release_info'        => 'release_info',
     'release_file'        => \XOOPS_URL . '/modules/wgslider/docs/release_info file',
-    'release_date'        => '2026/02/28',
+    'release_date'        => '2026/04/10',
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL . '/modules/wgslider/docs/install.txt',
     'min_php'             => '8.3',
@@ -62,7 +62,7 @@ $modversion = [
     'support_name'        => 'Support Forum',
     'module_website_url'  => 'www.xoops.org',
     'module_website_name' => 'XOOPS Project',
-    'release'             => '2026-02-28',
+    'release'             => '2026-04-10',
     'module_status'       => 'Beta 1',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
@@ -84,6 +84,7 @@ $modversion['templates'] = [
     ['file' => 'wgslider_admin_image.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wgslider_admin_image_editor.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'wgslider_admin_slideshow.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'wgslider_admin_permission.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wgslider_admin_clone.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wgslider_admin_footer.tpl', 'description' => '', 'type' => 'admin'],
 ];
@@ -196,7 +197,15 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 10,
 ];
-
+// use permission feature
+$modversion['config'][] = [
+    'name'        => 'usePermission',
+    'title'       => '_MI_WGSLIDER_USE_PERMISSION',
+    'description' => '_MI_WGSLIDER_USE_PERMISSION_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
 // Make Sample button visible?
 $modversion['config'][] = [
     'name'        => 'displaySampleButton',

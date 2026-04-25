@@ -126,7 +126,21 @@ require_once __DIR__ . '/common.php';
 \define('_AM_WGSLIDER_SLIDESHOW_AUTOHEIGHT', 'Bildhöhe automatisch anpassen');
 \define('_AM_WGSLIDER_SLIDESHOW_GAP', 'Abstand zwischen den Bildern');
 \define('_AM_WGSLIDER_SLIDESHOW_GAP_DESCR', 'Wird nur verwendet wenn "' . _AM_WGSLIDER_SLIDESHOW_PERVIEW . '" größer als 1 ist');
-
+// Permissions
+\define('_AM_WGSLIDER_PERMS_GLOBAL', 'Globale Berechtigungen');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT', 'Globale Berechtigungen zum Erstellen und Bearbeiten aller');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT_DESC', 'Gruppen, die Berechtigungen haben sollen, um <ul><li>Kategorien zu erstellen</li><li>alle Kategorien zu bearbeiten</li><li>Bilder in alle Kategorien hochzuladen</li></ul>');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_VIEW', 'Berechtigungen zum Anzeigen aller');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_VIEW_DESC', 'Gruppen, die Berechtigungen haben sollen, alle Kategorien anzuzeigen');
+\define('_AM_WGSLIDER_PERMS_GLOBAL_DESC', '<ul>
+                                                <li>' . \_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT . ': ' . \_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT_DESC . '<br></li>
+                                                <li>' . \_AM_WGSLIDER_PERMS_GLOBAL_VIEW . ': ' . \_AM_WGSLIDER_PERMS_GLOBAL_VIEW_DESC . '<br></li>
+                                           </ul>');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT', 'Berechtigungen zum Erstellen und Bearbeiten eigener Kategorien');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT_DESC', 'Gruppen, die Berechtigungen haben sollen, um <ul><li>Kategorien zu erstellen</li><li>nur eigene Kategorien zu bearbeiten</li><li>Bilder nur in eigene Kategorien hochzuladen</li></ul>');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_VIEW', 'Berechtigungen zum Anzeigen dieser Kategorie');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_VIEW_DESC', 'Gruppen, die Berechtigungen haben sollen, diese Kategorie anzuzeigen');
+\define('_AM_WGSLIDER_PERMS_NOTSET', 'Keine Berechtigung festgelegt');
 // General
 \define('_AM_WGSLIDER_DATECREATED', 'Erstellt am');
 \define('_AM_WGSLIDER_SUBMITTER', 'Eingereicht von');

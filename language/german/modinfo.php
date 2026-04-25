@@ -33,6 +33,7 @@ require_once __DIR__ . '/common.php';
 \define('_MI_WGSLIDER_ADMENU4', 'Diashows');
 \define('_MI_WGSLIDER_ADMENU5', 'Klonen');
 \define('_MI_WGSLIDER_ADMENU6', 'Feedback');
+\define('_MI_WGSLIDER_ADMENU7', 'Berechtigungen');
 \define('_MI_WGSLIDER_ABOUT', 'Über');
 // ---------------- Blocks ----------------
 \define('_MI_WGSLIDER_IMAGE_BLOCK_SLIDESHOW', 'Diashow');
@@ -56,4 +57,6 @@ require_once __DIR__ . '/common.php';
 \define('_MI_WGSLIDER_BOOKMARKS_DESC', 'Social-Bookmarks auf der Einzelseite anzeigen');
 \define('_MI_WGSLIDER_SHOW_TAB_CLONE', 'Tab "Klonen" auf der Admin-Seite anzeigen');
 \define('_MI_WGSLIDER_SHOW_TAB_FEEDBACK', 'Tab "Feedback" auf der Admin-Seite anzeigen');
+\define('_MI_WGSLIDER_USE_PERMISSION', 'Feature Berechtigungen');
+\define('_MI_WGSLIDER_USE_PERMISSION_DESC', 'Legen Sie fest ob Sie das System zur Verwaltung von Berechtigungen verwenden wollen');
 // ---------------- End ----------------
