@@ -84,6 +84,7 @@ $modversion['templates'] = [
     ['file' => 'wgslider_admin_image.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wgslider_admin_image_editor.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'wgslider_admin_slideshow.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'wgslider_admin_permission.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wgslider_admin_clone.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wgslider_admin_footer.tpl', 'description' => '', 'type' => 'admin'],
 ];
@@ -196,7 +197,15 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 10,
 ];
-
+// use permission feature
+$modversion['config'][] = [
+    'name'        => 'usePermission',
+    'title'       => '_MI_WGSLIDER_USE_PERMISSION',
+    'description' => '_MI_WGSLIDER_USE_PERMISSION_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
 // Make Sample button visible?
 $modversion['config'][] = [
     'name'        => 'displaySampleButton',

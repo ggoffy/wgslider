@@ -43,6 +43,13 @@ $adminmenu[] = [
     'link' => 'admin/slideshow.php',
     'icon' => 'assets/icons/32/slideshow.png',
 ];
+if ($helper->getConfig('usePermission')) {
+    $adminmenu[] = [
+        'title' => \_MI_WGSLIDER_ADMENU7,
+        'link' => 'admin/permission.php',
+        'icon' => 'assets/icons/32/permission.png',
+    ];
+}
 if ($helper->getConfig('displayTabClone')) {
     $adminmenu[] = [
         'title' => \_MI_WGSLIDER_ADMENU5,

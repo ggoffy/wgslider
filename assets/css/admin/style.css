@@ -94,3 +94,8 @@
 .wgs-preview-container-body {
     max-width: 800px;
 }
+
+/* overwrite default of xoops */
+.xo-buttons a {
+    margin: 2px !important;
+}
