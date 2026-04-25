@@ -171,7 +171,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
         $imageHandler    = $helper->getHandler('Image');
         /** `@var` \XoopsModules\Wgslider\CategoryHandler $categoryHandler */
         $categoryHandler = $helper->getHandler('Category');
-        
+
         $block     = [];
         $slsParams = [];
         $slsAssets = [];
