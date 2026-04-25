@@ -28,6 +28,10 @@ require_once \XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 $templateMain = 'wgslider_admin_permission.tpl';
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('permissions.php'));
 $op = Request::getString('op', 'global');
+if (!\in_array($op, ['global', 'cat_submit', 'cat_view'], true)) {
+    $op = 'global';
+}
+
 \xoops_load('XoopsFormLoader');
 $permTableForm = new \XoopsSimpleForm('', 'fselperm', 'permission.php', 'post');
 $formSelect    = new \XoopsFormSelect('', 'op', $op);
@@ -69,8 +73,8 @@ if ('global' === $op) {
     $categoryCount = $categoryHandler->getCountCategory();
     if ($categoryCount > 0) {
         $categoryAll = $categoryHandler->getAllCategory();
-        foreach (\array_keys($categoryAll) as $i) {
-            $permform->addItem($categoryAll[$i]->getVar('id'), $categoryAll[$i]->getVar('name'));
+        foreach ($categoryAll as $categoryObj) {
+            $permform->addItem((int) $categoryObj->getVar('id'), $categoryObj->getVar('name'));
         }
         $GLOBALS['xoopsTpl']->assign('form', $permform->render());
     } else {

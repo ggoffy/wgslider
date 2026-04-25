@@ -40,6 +40,32 @@ class PermissionHandler extends \XoopsPersistableObjectHandler
     {
         parent::__construct();
     }
+
+    /**
+     * Resolve current module id, admin flag, and the user's group ids.
+     *
+     * `@return` array{0:int,1:bool,2:array<int>}
+     */
+    private function getPermContext(): array
+    {
+        global $xoopsUser, $xoopsModule;
+        $mid     = (int) $xoopsModule->mid();
+        $isAdmin = false;
+        $uid     = 0;
+        if (isset($xoopsUser) && \is_object($xoopsUser)) {
+            $isAdmin = (bool) $xoopsUser->isAdmin($mid);
+            $uid     = (int) $xoopsUser->uid();
+        }
+        if (0 === $uid) {
+            $groupIds = [\XOOPS_GROUP_ANONYMOUS];
+        } else {
+            /** `@var` \XoopsMemberHandler $memberHandler */
+            $memberHandler = \xoops_getHandler('member');
+            $groupIds      = $memberHandler->getGroupsByUser($uid);
+        }
+        return [$mid, $isAdmin, $groupIds, $uid];
+    }
+
     /**
      * @public function permGlobalSubmit
      * returns right for global submit
@@ -48,22 +74,12 @@ class PermissionHandler extends \XoopsPersistableObjectHandler
      */
     public function getPermGlobalSubmit()
     {
-        global $xoopsUser, $xoopsModule;
-        $currentuid = 0;
-        if (isset($xoopsUser) && \is_object($xoopsUser)) {
-            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-                return true;
-            }
-            $currentuid = $xoopsUser->uid();
+        [$mid, $isAdmin, $my_group_ids] = $this->getPermContext();
+        if ($isAdmin) {
+            return true;
         }
+        /** `@var` \XoopsGroupPermHandler $gpermHandler */
         $grouppermHandler = \xoops_getHandler('groupperm');
-        $mid = $xoopsModule->mid();
-        $memberHandler = \xoops_getHandler('member');
-        if (0 == $currentuid) {
-            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
-        } else {
-            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
         if ($grouppermHandler->checkRight('wgslider_global', Constants::PERM_GLOBAL_SUBMIT, $my_group_ids, $mid)) {
             return true;
         }
@@ -82,23 +98,12 @@ class PermissionHandler extends \XoopsPersistableObjectHandler
             return true;
         }
 
-        global $xoopsUser, $xoopsModule;
-        $currentuid = 0;
-        if (isset($xoopsUser) && \is_object($xoopsUser)) {
-            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-                return true;
-            }
-            $currentuid = $xoopsUser->uid();
+        [$mid, $isAdmin, $my_group_ids] = $this->getPermContext();
+        if ($isAdmin) {
+            return true;
         }
+        /** `@var` \XoopsGroupPermHandler $gpermHandler */
         $grouppermHandler = \xoops_getHandler('groupperm');
-        $mid = $xoopsModule->mid();
-        $memberHandler = \xoops_getHandler('member');
-        if (0 == $currentuid) {
-            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
-        } else {
-            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
-
         if ($grouppermHandler->checkRight('wgslider_global', Constants::PERM_GLOBAL_VIEW, $my_group_ids, $mid)) {
             return true;
         }
@@ -117,22 +122,12 @@ class PermissionHandler extends \XoopsPersistableObjectHandler
             return true;
         }
 
-        global $xoopsUser, $xoopsModule;
-        $currentuid = 0;
-        if (isset($xoopsUser) && \is_object($xoopsUser)) {
-            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-                return true;
-            }
-            $currentuid = $xoopsUser->uid();
+        [$mid, $isAdmin, $my_group_ids] = $this->getPermContext();
+        if ($isAdmin) {
+            return true;
         }
+        /** `@var` \XoopsGroupPermHandler $gpermHandler */
         $grouppermHandler = \xoops_getHandler('groupperm');
-        $mid = $xoopsModule->mid();
-        $memberHandler = \xoops_getHandler('member');
-        if (0 == $currentuid) {
-            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
-        } else {
-            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
         if ($grouppermHandler->checkRight('wgslider_global', Constants::PERM_CATEGORY_SUBMIT, $my_group_ids, $mid)) {
             return true;
         }
@@ -153,25 +148,12 @@ class PermissionHandler extends \XoopsPersistableObjectHandler
             return true;
         }
 
-        global $xoopsUser, $xoopsModule;
-        $currentuid = 0;
-        if (isset($xoopsUser) && \is_object($xoopsUser)) {
-            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-                return true;
-            }
-            $currentuid = (int)$xoopsUser->uid();
+        [$mid, $isAdmin, $my_group_ids] = $this->getPermContext();
+        if ($isAdmin) {
+            return true;
         }
-        if ($currentuid !== $catSubmitter) {
-            return false;
-        }
+        /** `@var` \XoopsGroupPermHandler $gpermHandler */
         $grouppermHandler = \xoops_getHandler('groupperm');
-        $mid = $xoopsModule->mid();
-        $memberHandler = \xoops_getHandler('member');
-        if (0 == $currentuid) {
-            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
-        } else {
-            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
         if ($grouppermHandler->checkRight('wgslider_cat_edit', $catId, $my_group_ids, $mid)) {
             return true;
         }
@@ -191,23 +173,12 @@ class PermissionHandler extends \XoopsPersistableObjectHandler
             return true;
         }
 
-        global $xoopsUser, $xoopsModule;
-        $currentuid = 0;
-        if (isset($xoopsUser) && \is_object($xoopsUser)) {
-            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-                return true;
-            }
-            $currentuid = $xoopsUser->uid();
+        [$mid, $isAdmin, $my_group_ids] = $this->getPermContext();
+        if ($isAdmin) {
+            return true;
         }
+        /** `@var` \XoopsGroupPermHandler $gpermHandler */
         $grouppermHandler = \xoops_getHandler('groupperm');
-        $mid = $xoopsModule->mid();
-        $memberHandler = \xoops_getHandler('member');
-        if (0 == $currentuid) {
-            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
-        } else {
-            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
-
         if ($grouppermHandler->checkRight('wgslider_cat_view', $catId, $my_group_ids, $mid)) {
             return true;
         }

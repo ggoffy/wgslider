@@ -88,10 +88,12 @@ switch ($op) {
         } else {
             \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
         }
-        if (!$categoryObj) {
+        if (!\is_object($categoryObj)) {
             \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
         }
-
+        if ($usePerm && !$permissionHandler->getPermCategoryEdit($categoryObj->getVar('id'), $categoryObj->getVar('submitter'))) {
+            \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
+        }
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wgslider_admin_category.tpl';
 
@@ -107,7 +109,7 @@ switch ($op) {
             case 0:
             default:
                 \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
-                break;
+                exit;
             case Constants::SLIDESHOW_DEFAULT:
             case Constants::SLIDESHOW_SPLIDE:
             case Constants::SLIDESHOW_SWIPER:
@@ -135,6 +137,9 @@ switch ($op) {
         }
         if ($catId > 0) {
             $categoryObj = $categoryHandler->get($catId);
+            if (!\is_object($categoryObj)) {
+                \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+            }
         } else {
             \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
         }
@@ -177,6 +182,9 @@ switch ($op) {
         $catIdSource = Request::getInt('id_source');
         // Get Form
         $categoryObjSource = $categoryHandler->get($catIdSource);
+        if (!\is_object($categoryObjSource)) {
+            \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
         if ($usePerm && !$permissionHandler->getPermCategoryEdit($categoryObjSource->getVar('id'), $categoryObjSource->getVar('submitter'))) {
             \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
         }
@@ -191,6 +199,9 @@ switch ($op) {
         }
         if ($catId > 0) {
             $categoryObj = $categoryHandler->get($catId);
+            if (!\is_object($categoryObj)) {
+                \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+            }
             if ($usePerm && !$permissionHandler->getPermCategoryEdit($categoryObj->getVar('id'), $categoryObj->getVar('submitter'))) {
                 \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
             }
@@ -233,6 +244,9 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $categoryObj = $categoryHandler->get($catId);
+        if (!\is_object($categoryObj)) {
+            \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
         if ($usePerm && !$permissionHandler->getPermCategoryEdit($categoryObj->getVar('id'), $categoryObj->getVar('submitter'))) {
             \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
         }
@@ -245,6 +259,9 @@ switch ($op) {
         $templateMain = 'wgslider_admin_category.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('category.php'));
         $categoryObj = $categoryHandler->get($catId);
+        if (!\is_object($categoryObj)) {
+            \redirect_header('category.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
         if ($usePerm && !$permissionHandler->getPermCategoryEdit($categoryObj->getVar('id'), $categoryObj->getVar('submitter'))) {
             \redirect_header('category.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
         }

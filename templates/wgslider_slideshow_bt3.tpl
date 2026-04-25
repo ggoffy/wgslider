@@ -13,15 +13,15 @@
     <!-- Indicators -->
     <{if $block.params.show_indicator}>
     <ol class="carousel-indicators">
-        <{foreach $block['images'] as $slider_images name=loop}>
+        <{foreach $block['images'] as $slider_image name=loop}>
         <li class="<{if $smarty.foreach.loop.index == 0}>active<{/if}>" data-slide-to="<{$smarty.foreach.loop.index}>" data-target="#myCarousel<{$wgslider_identifier}>"></li>
         <{/foreach}>
     </ol>
     <{/if}>
     <div class="carousel-inner">
-        <{foreach $block['images'] as $slider_images name=loop}>
+        <{foreach $block['images'] as $slider_image name=loop}>
         <li class="item <{if $smarty.foreach.loop.index == 0}>active<{/if}>">
-            <img class="img-fluid" alt="<{$slider_images.description}>" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_images.realname}>">
+            <img class="img-fluid" alt="<{$slider_image.description}>" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_image.realname}>">
         </li>
         <{/foreach}>
     </div>

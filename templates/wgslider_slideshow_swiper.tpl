@@ -10,14 +10,14 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        <{if $block.params.bg_caption == 'smooth'}>
+        <{if $block.params.bg_caption === 'smooth'}>
         background: linear-gradient(
                 to top,
                 rgba(0,0,0,0.9),
                 rgba(0,0,0,0)
         );
         <{/if}>
-        <{if $block.params.bg_caption == 'hard'}>
+        <{if $block.params.bg_caption === 'hard'}>
         background: rgba(0,0,0,0.5);
         <{/if}>
         color: #fff;

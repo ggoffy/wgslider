@@ -66,7 +66,7 @@ switch ($op) {
                 $categoryCount = $categoryHandler->getCount($crCategory);
                 $image['category_offline'] = (0 === $categoryCount);
                 if ($usePerm) {
-                    $permEdit = $permissionHandler->getPermCategoryEdit($i, $image['submitter']);
+                    $permEdit = $permissionHandler->getPermCategoryEdit($image['category'], $image['submitter']);
                 } else {
                     $permEdit = true;
                 }
@@ -91,6 +91,9 @@ switch ($op) {
             // run through all images to check whether current user has permission to edit all images
             for ($i = 0, $iMax = \count($iorder); $i < $iMax; $i++){
                 $imageObj = $imageHandler->get($iorder[$i]);
+                if (!\is_object($imageObj)) {
+                    \redirect_header('image.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+                }
                 if (!$permissionHandler->getPermCategoryEdit($imageObj->getVar('category'), $imageObj->getVar('submitter'))) {
                     \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
                 }
@@ -109,6 +112,9 @@ switch ($op) {
         }
         if ($imgId > 0) {
             $imageObj = $imageHandler->get($imgId);
+            if (!\is_object($imageObj)) {
+                \redirect_header('image.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+            }
         } else {
             \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_AM_WGSLIDER_INVALID_PARAM);
         }
@@ -151,6 +157,9 @@ switch ($op) {
         $imgIdSource = Request::getInt('id_source');
         // Get Form
         $imageObjSource = $imageHandler->get($imgIdSource);
+        if (!\is_object($imageObjSource)) {
+            \redirect_header('image.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
         if ($usePerm && !$permissionHandler->getPermCategoryEdit($imageObjSource->getVar('category'), $imageObjSource->getVar('submitter'))) {
             \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
         }
@@ -165,6 +174,9 @@ switch ($op) {
         }
         if ($imgId > 0) {
             $imageObj = $imageHandler->get($imgId);
+            if (!\is_object($imageObj)) {
+                \redirect_header('image.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+            }
             if ($usePerm && !$permissionHandler->getPermCategoryEdit($imageObj->getVar('category'), $imageObj->getVar('submitter'))) {
                 \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
             }
@@ -267,6 +279,9 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $imageObj = $imageHandler->get($imgId);
+        if (!\is_object($imageObj)) {
+            \redirect_header('image.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
         if ($usePerm && !$permissionHandler->getPermCategoryEdit($imageObj->getVar('category'), $imageObj->getVar('submitter'))) {
             \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
         }
@@ -279,6 +294,9 @@ switch ($op) {
         $templateMain = 'wgslider_admin_image.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('image.php'));
         $imageObj = $imageHandler->get($imgId);
+        if (!\is_object($imageObj)) {
+            \redirect_header('image.php?op=list', 2, \_AM_WGSLIDER_INVALID_PARAM);
+        }
         if ($usePerm && !$permissionHandler->getPermCategoryEdit($imageObj->getVar('category'), $imageObj->getVar('submitter'))) {
             \redirect_header('image.php?op=list&start=' . $start . '&limit=' . $limit, 2, \_NOPERM);
         }
