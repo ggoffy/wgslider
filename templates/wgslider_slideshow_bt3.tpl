@@ -20,9 +20,9 @@
     <{/if}>
     <div class="carousel-inner">
         <{foreach $block['images'] as $slider_image name=loop}>
-        <li class="item <{if $smarty.foreach.loop.index == 0}>active<{/if}>">
+        <div class="item <{if $smarty.foreach.loop.index == 0}>active<{/if}>">
             <img class="img-fluid" alt="<{$slider_image.description}>" src="<{$wgslider_upload_image_url|default:''}>/<{$slider_image.realname}>">
-        </li>
+        </div>
         <{/foreach}>
     </div>
     <{if $block.params.show_prev_next}>
@@ -34,9 +34,9 @@
 <script>
     $('#myCarousel<{$wgslider_identifier}>').carousel({
         interval: <{$block.params.interval|default:5000}>,
-        pause: "<{$block.params.pause|default:'hover'}>",
-        wrap: <{$block.params.wrap|default:true}>,
-        keyboard: <{$block.params.keyboard|default:true}>
+        pause: "<{$block.params.pause|default:'hover'|@json_encode}>",
+        wrap: <{$block.params.wrap|default:true|@json_encode}>,
+        keyboard: <{$block.params.keyboard|default:true|@json_encode}>
     });
 </script>
 

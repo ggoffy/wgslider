@@ -145,7 +145,7 @@
                 slidesPerView: perview,
 
                 autoplay: autoplay ? {
-                    delay: <{$block.params.delay}>,
+                    delay: <{$block.params.delay|default:5000|@json_encode}>,
                     pauseOnMouseEnter: <{$block.params.pauseOnMouse|@json_encode}>,
                     disableOnInteraction: false
                 } : false,

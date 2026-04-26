@@ -58,5 +58,5 @@ require_once __DIR__ . '/common.php';
 \define('_MI_WGSLIDER_SHOW_TAB_CLONE', 'Tab "Klonen" auf der Admin-Seite anzeigen');
 \define('_MI_WGSLIDER_SHOW_TAB_FEEDBACK', 'Tab "Feedback" auf der Admin-Seite anzeigen');
 \define('_MI_WGSLIDER_USE_PERMISSION', 'Feature Berechtigungen');
-\define('_MI_WGSLIDER_USE_PERMISSION_DESC', 'Legen Sie fest ob Sie das System zur Verwaltung von Berechtigungen verwenden wollen');
+\define('_MI_WGSLIDER_USE_PERMISSION_DESC', 'Legen Sie fest, ob Sie das System zur Verwaltung von Berechtigungen verwenden wollen');
 // ---------------- End ----------------

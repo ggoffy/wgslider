@@ -31,6 +31,6 @@
             slides[slideIndex - 1].style.display = "block";
         }
 
-        setTimeout(showSlides, <{$block.params.timeout|default:1000}>); // 4 seconds
+        setTimeout(showSlides, <{$block.params.timeout|default:4000}>); // 4 seconds
     }
 </script>

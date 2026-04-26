@@ -75,12 +75,6 @@
 <{/if}>
 
 <{if $preview|default:false}>
-    <{if $preview_css|default:[]}>
-        <{foreach item=css from=$preview_css}><{/foreach}>
-    <{/if}>
-    <{if $preview_js|default:[]}>
-        <{foreach item=js from=$preview_js}><{/foreach}>
-    <{/if}>
     <div class='wgs-preview-container'>
         <div class='wgs-preview-container-header center'>
             <div class='xo-buttons'>
@@ -88,7 +82,7 @@
             </div>
         </div>
         <div class='wgs-preview-container-body center'>
-            <{include file='db:$wgslider_slideshow_tpl' block=$block}>
+            <{include file="db:$wgslider_slideshow_tpl" block=$block}>
         </div>
     </div>
 <{/if}>

@@ -136,7 +136,7 @@ require_once __DIR__ . '/common.php';
                                                 <li>' . \_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT . ': ' . \_AM_WGSLIDER_PERMS_GLOBAL_SUBMIT_DESC . '<br></li>
                                                 <li>' . \_AM_WGSLIDER_PERMS_GLOBAL_VIEW . ': ' . \_AM_WGSLIDER_PERMS_GLOBAL_VIEW_DESC . '<br></li>
                                            </ul>');
-\define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT', 'Permissions global to submit and edit own categories');
+\define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT', 'Permissions to submit and edit own categories');
 \define('_AM_WGSLIDER_PERMS_CATEGORY_SUBMIT_DESC', 'Groups which should have permissions to <ul><li>create categories</li><li>edit only own categories</li><li>upload images only to own categories</li></ul>');
 \define('_AM_WGSLIDER_PERMS_CATEGORY_VIEW', 'Permissions to view this category');
 \define('_AM_WGSLIDER_PERMS_CATEGORY_VIEW_DESC', 'Groups which should have permissions to view this category');

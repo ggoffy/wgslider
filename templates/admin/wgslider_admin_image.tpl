@@ -24,7 +24,7 @@
         <tbody>
             <{foreach item=image from=$image_list}>
             <tr class='<{cycle values='odd, even'}>' id='iorder_<{$image.id}>'>
-                <td class='center''><img src='<{$modPathIcon16}>/up_down.png' alt='drag&drop' class='icon-sortable'/></td>
+                <td class='center'><img src='<{$modPathIcon16}>/up_down.png' alt='drag&drop' class='icon-sortable'/></td>
                 <td class=''><{$image.id|default:false}></td>
                 <td class=''><{$image.name|default:''}></td>
                 <td class=''><{$image.description|default:''}></td>

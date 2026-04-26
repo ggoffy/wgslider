@@ -181,7 +181,7 @@ class SlideshowHandler extends \XoopsPersistableObjectHandler
             if ((int)$categoryObj->getVar('display') !== $display && !$preview) {
                 return [];
             }
-            if ((int)$categoryObj->getVar('status') !== Constants::STATUS_ONLINE) {
+            if ((int)$categoryObj->getVar('status') !== Constants::STATUS_ONLINE && !$preview) {
                 return [];
             }
             $slideshowObj = $this->get($categoryObj->getVar('slideshow'));
