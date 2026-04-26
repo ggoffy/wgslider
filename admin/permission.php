@@ -28,7 +28,7 @@ require_once \XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 $templateMain = 'wgslider_admin_permission.tpl';
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('permission.php'));
 $op = Request::getString('op', 'global');
-if (!\in_array($op, ['global', 'cat_submit', 'cat_view'], true)) {
+if (!\in_array($op, ['global', 'cat_view'], true)) {
     $op = 'global';
 }
 

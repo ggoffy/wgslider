@@ -42,14 +42,18 @@
                 <td class=''><{$image.datecreated_text|default:''}></td>
                 <td class=''><{$image.submitter_text|default:''}></td>
                 <td class='center'>
-                    <form action='image.php' method='post' style='display:inline;'>
-                        <{$token}>
-                        <input type='hidden' name='op' value='change_status'>
-                        <input type='hidden' name='id' value='<{$image.id}>'>
-                        <input type='hidden' name='start' value='<{$start}>'>
-                        <input type='hidden' name='limit' value='<{$limit}>'>
-                        <input type='image'  src='<{$modPathIcon32}>status<{$image.status}>.png' style='height:16px;border:0;'>
-                    </form>
+                    <{if $image.perm_edit|default:false}>
+                        <form action='image.php' method='post' style='display:inline;'>
+                            <{$token}>
+                            <input type='hidden' name='op' value='change_status'>
+                            <input type='hidden' name='id' value='<{$image.id}>'>
+                            <input type='hidden' name='start' value='<{$start}>'>
+                            <input type='hidden' name='limit' value='<{$limit}>'>
+                            <input type='image'  src='<{$modPathIcon32}>status<{$image.status}>.png' style='height:16px;border:0;'>
+                        </form>
+                    <{else}>
+                        <img src='<{$modPathIcon32}>status<{$image.status}>.png' style='height:16px;border:0;' alt='status'>
+                    <{/if}>
                 </td>
                 <td class='center width5'>
                     <div class='xo-buttons'>
